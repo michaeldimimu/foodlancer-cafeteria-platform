@@ -1,3 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @apply scroll-pt-20 scroll-smooth;
+}
+
+/* scrollbar customisation */
+::-webkit-scrollbar {
+  @apply hidden h-2 w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 opacity-20;
+}
+
+body {
+  font-family: var(--font-poppins);
+  @apply bg-[#fafafa] text-sm leading-[160%] tracking-tight text-neutral-dark03 sm:text-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-darker-grotesque);
+  @apply font-semibold tracking-tight text-neutral-dark01;
+}
+
+h1 {
+  @apply text-6xl font-normal lg:text-7xl;
+}
+
+h2 {
+  @apply text-4xl lg:text-5xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+input {
+  @apply rounded-lg border border-gray-300 bg-[#fafafa] px-2 py-1 text-neutral-dark01 focus:outline-primary-one;
+}
+
+label {
+  @apply text-sm font-medium text-neutral-dark01;
+}
+
+button,
+a {
+  transition: all 0.3s;
+}
+
+button:active,
+a:active {
+  scale: 0.9;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+.darker-grotesque-font {
+  font-family: var(--font-darker-grotesque);
+}
+
+.btn {
+  @apply rounded-lg font-medium shadow-lg;
+}
+
+.btn.btn-accent {
+  @apply bg-gradient-to-r from-primary-one to-primary-two text-white;
+}
+
+.btn.btn-secondary {
+  @apply border border-neutral-dark01 bg-white text-neutral-dark01;
+}
