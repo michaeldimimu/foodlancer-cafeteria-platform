@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Darker_Grotesque } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 
 import "./globals.css";
 
@@ -68,7 +69,9 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} ${darkerGrotesque.variable}`}
     >
-      <body>{children}</body>
+      <SessionProvider>
+        <body>{children}</body>
+      </SessionProvider>
     </html>
   );
 }
