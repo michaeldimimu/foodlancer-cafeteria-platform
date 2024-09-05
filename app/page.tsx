@@ -1,3 +1,4 @@
+import { signOut } from "@/auth/auth";
 import getSession from "@/auth/lib/getSession";
 import { redirect } from "next/navigation";
 
@@ -9,7 +10,19 @@ const Home = async () => {
     redirect("/api/auth/signin?callbackUrl=/");
   }
 
-  return <div>Home {JSON.stringify(user)}</div>;
+  return (
+    <main>
+      <p>Home {JSON.stringify(user)}</p>
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+      >
+        <button type="submit">Sign out</button>
+      </form>
+    </main>
+  );
 };
 
 export default Home;
