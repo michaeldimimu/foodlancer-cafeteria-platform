@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
 import "react-toastify/ReactToastify.css";
+import Navigation from "./ui/navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -72,9 +73,10 @@ export default function RootLayout({
       className={`${poppins.variable} ${darkerGrotesque.variable}`}
     >
       <SessionProvider>
-        <body>
+        <body className="mb-12">
           <ToastContainer />
           {children}
+          <Navigation />
         </body>
       </SessionProvider>
     </html>

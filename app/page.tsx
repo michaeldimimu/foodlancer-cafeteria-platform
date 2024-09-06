@@ -15,15 +15,9 @@ const Home = async () => {
 
   return (
     <main className="p-4">
-      <p>Home {JSON.stringify(user)}</p>
-      <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-      >
-        <button type="submit">Sign out</button>
-      </form>
+      <div className="sticky top-0 border-b bg-neutral-light py-4">
+        <h1 className="text-3xl font-bold">Order stream - {user.cafeteria}</h1>
+      </div>
 
       <Suspense fallback={<OrderStreamSkeleton />}>
         <OrderStream cafeteriaName={user.cafeteria} />
