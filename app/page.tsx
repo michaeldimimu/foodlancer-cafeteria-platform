@@ -4,6 +4,12 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import OrderStreamSkeleton from "./ui/skeletons/order-stream-skeleton";
 import OrderStream from "./ui/orders/order-stream";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Order stream",
+  description: "View orders for your cafeteria as they come in.",
+};
 
 const Home = async () => {
   const session = await getSession();
