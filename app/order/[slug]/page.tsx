@@ -25,6 +25,11 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
       </h1>
 
       <div className="mb-2">
+        <p className="font-medium text-neutral-dark01">Ordered by</p>
+        <p>{order.user.email}</p>
+      </div>
+
+      <div className="mb-2">
         <p className="font-medium text-neutral-dark01">Confirmation status</p>
         {order.status === "confirmed" ? (
           <div className="flex w-fit items-center gap-1 rounded-xl bg-green-100 px-2 py-1 text-green-700">
