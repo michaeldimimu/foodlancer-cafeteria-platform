@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Darker_Grotesque } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
+import "react-toastify/ReactToastify.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -70,7 +72,10 @@ export default function RootLayout({
       className={`${poppins.variable} ${darkerGrotesque.variable}`}
     >
       <SessionProvider>
-        <body>{children}</body>
+        <body>
+          <ToastContainer />
+          {children}
+        </body>
       </SessionProvider>
     </html>
   );

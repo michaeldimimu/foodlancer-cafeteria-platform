@@ -1,6 +1,7 @@
 import dbConnect from "@/server/lib/dbConnect";
 import Cafeteria from "@/server/models/Cafeteria";
 import Order from "@/server/models/Order";
+import mongoose from "mongoose";
 
 // export async function fetchCafeteria(cafeteriaName: string) {
 //   await dbConnect();
@@ -14,14 +15,27 @@ import Order from "@/server/models/Order";
 //   }
 // }
 
-export async function fetchOrderHistory(cafeteriaName: string) {
+export async function fetchOrderStream(cafeteriaName: string) {
   await dbConnect();
 
   try {
-    const orderHistory = await Order.find({ cafeteria: cafeteriaName });
-    console.log(orderHistory);
+    const orderHistory = await Order.find({ cafeteria: cafeteriaName })
+      .sort({ createdAt: -1 })
+      .exec();
     return orderHistory;
   } catch (error: any) {
     throw new Error(error.message);
+  }
+}
+
+export async function fetchOrder(id: string | mongoose.Types.ObjectId) {
+  await dbConnect();
+
+  try {
+    const objId = typeof id === "string" ? new mongoose.Types.ObjectId(id) : id;
+    const order = await Order.findById(objId).exec();
+    return order;
+  } catch (error) {
+    console.log("Error fetching order" + error);
   }
 }

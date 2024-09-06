@@ -24,7 +24,7 @@ const OrderSchema = new Schema(
     status: {
       type: String,
       required: true,
-      enum: ["pending", "completed", "cancelled"],
+      enum: ["pending", "confirmed", "cancelled"],
     },
     confirmationId: { type: Number, required: true, unique: true },
   },

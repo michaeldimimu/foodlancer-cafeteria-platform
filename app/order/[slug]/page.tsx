@@ -1,0 +1,99 @@
+import { fetchOrder } from "@/app/lib/data";
+
+import { OrderFoodItem, Plate } from "@/app/types/order";
+
+import BackButton from "@/app/ui/back-button";
+import ToggleConfirmOrderButton from "@/app/ui/orders/toggle-confirm-order-button";
+
+import { AccessTimeOutlined, CheckCircleOutline } from "@mui/icons-material";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Order details",
+  description: "View the details of your order",
+};
+
+const OrderPage = async ({ params }: { params: { slug: string } }) => {
+  const order = await fetchOrder(params.slug);
+
+  return (
+    <main className="p-4">
+      <BackButton />
+      <h1 className="mb-4 mt-2 text-3xl font-bold">
+        Order #{order.confirmationId}
+      </h1>
+
+      <div className="mb-2">
+        <p className="font-medium text-neutral-dark01">Confirmation status</p>
+        {order.status === "confirmed" ? (
+          <div className="flex w-fit items-center gap-1 rounded-xl bg-green-100 px-2 py-1 text-green-700">
+            <span>{order.status}</span>
+            <CheckCircleOutline fontSize="inherit" />
+          </div>
+        ) : (
+          <div className="flex w-fit items-center gap-1 rounded-xl bg-yellow-100 px-2 py-1 text-yellow-700">
+            <span>{order.status}</span>
+            <AccessTimeOutlined fontSize="inherit" />
+          </div>
+        )}
+      </div>
+
+      <div className="mb-2">
+        <p className="font-medium text-neutral-dark01">Ordered from</p>
+        <p>{order.cafeteria}</p>
+      </div>
+
+      <div>
+        <p className="font-medium text-neutral-dark01">Date ordered</p>
+        <p>{order.createdAt.toDateString()}</p>
+        <p>{order.createdAt.toLocaleTimeString("en-US")}</p>
+      </div>
+
+      <hr className="mt-4" />
+
+      <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        {order.plates.map((plate: Plate, index: number) => (
+          <div key={plate._id.toString()}>
+            <p className="font-medium text-neutral-dark01">
+              Plate #{index + 1}
+            </p>
+            {plate.foodItems.map((item: OrderFoodItem) => (
+              <div key={item._id.toString()}>
+                <p className="text-neutral-dark03">
+                  {item.name} x{item.quantity}
+                </p>
+                <p className="text-base font-medium text-neutral-dark01">
+                  &#8358;{item.price * item.quantity}
+                </p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <hr className="mt-4" />
+
+      <div className="my-2 flex items-center justify-between text-neutral-dark01">
+        <p className="font-medium">Subtotal</p>
+        <p className="text-base font-medium">&#8358;{order.subTotal}</p>
+      </div>
+      <div className="my-2 flex items-center justify-between text-neutral-dark01">
+        <p className="font-medium">Processing fee</p>
+        <p className="text-base font-medium">&#8358;{order.processingFee}</p>
+      </div>
+      <hr />
+      <div className="my-2 flex items-center justify-between text-neutral-dark01">
+        <p className="text-base font-medium">Total</p>
+        <p className="text-lg font-medium">&#8358;{order.total}</p>
+      </div>
+
+      <ToggleConfirmOrderButton
+        status={order.status}
+        confirmationId={order.confirmationId}
+      />
+    </main>
+  );
+};
+
+export default OrderPage;

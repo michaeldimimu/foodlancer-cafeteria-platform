@@ -1,8 +1,9 @@
 import { signOut } from "@/auth/auth";
 import getSession from "@/auth/lib/getSession";
 import { redirect } from "next/navigation";
-import { fetchOrderHistory } from "./lib/data";
-import { Order } from "./types/order";
+import { Suspense } from "react";
+import OrderStreamSkeleton from "./ui/skeletons/order-stream-skeleton";
+import OrderStream from "./ui/orders/order-stream";
 
 const Home = async () => {
   const session = await getSession();
@@ -12,10 +13,8 @@ const Home = async () => {
     redirect("/api/auth/signin?callbackUrl=/");
   }
 
-  const orderHistory = await fetchOrderHistory(user.cafeteria);
-
   return (
-    <main>
+    <main className="p-4">
       <p>Home {JSON.stringify(user)}</p>
       <form
         action={async () => {
@@ -26,12 +25,9 @@ const Home = async () => {
         <button type="submit">Sign out</button>
       </form>
 
-      {orderHistory.map((order: Order) => (
-        <>
-          <p>{order.cafeteria}</p>
-          <p>{order.confirmationId}</p>
-        </>
-      ))}
+      <Suspense fallback={<OrderStreamSkeleton />}>
+        <OrderStream cafeteriaName={user.cafeteria} />
+      </Suspense>
     </main>
   );
 };
