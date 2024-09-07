@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import "react-toastify/ReactToastify.css";
 import Navigation from "./ui/navigation";
+import NextTopLoader from "nextjs-toploader";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -75,6 +76,7 @@ export default function RootLayout({
       <SessionProvider>
         <body className="mb-12">
           <ToastContainer />
+          <NextTopLoader color="#8383ff" showSpinner={false} />
           {children}
           <Navigation />
         </body>
