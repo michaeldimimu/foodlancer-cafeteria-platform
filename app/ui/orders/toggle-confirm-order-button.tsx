@@ -10,7 +10,7 @@ const ToggleConfirmOrderButton = ({
   confirmationId,
 }: {
   status: string;
-  confirmationId: number;
+  confirmationId: string | number;
 }) => {
   const handleToggleConfirmationStatus = async () => {
     const id = toast.loading("Please wait...");

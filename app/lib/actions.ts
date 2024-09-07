@@ -4,7 +4,7 @@ import dbConnect from "@/server/lib/dbConnect";
 import Order from "@/server/models/Order";
 import { revalidatePath } from "next/cache";
 
-export async function toggleConfirmOrder(confirmationId: number) {
+export async function toggleConfirmOrder(confirmationId: string | number) {
   await dbConnect();
   try {
     const orderToToggle = await Order.findOne({

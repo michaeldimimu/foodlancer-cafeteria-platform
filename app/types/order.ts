@@ -13,6 +13,26 @@ export type Plate = {
   price: number;
 };
 
+export type User = {
+  _id: mongoose.Types.ObjectId;
+  name: string;
+  email: string;
+};
+
+export type PopulatedOrder = {
+  _id: mongoose.Types.ObjectId;
+  status: string;
+  confirmationId: string;
+  createdAt: Date;
+  cafeteria: string;
+  plates: Plate[];
+  user: User;
+  processingFee: number;
+  processingFeePercentage: number;
+  subTotal: number;
+  total: number;
+};
+
 export type Order = {
   _id: mongoose.Types.ObjectId;
   status: string;

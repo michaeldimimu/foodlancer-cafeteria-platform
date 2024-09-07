@@ -1,4 +1,3 @@
-import { signOut } from "@/auth/auth";
 import getSession from "@/auth/lib/getSession";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";

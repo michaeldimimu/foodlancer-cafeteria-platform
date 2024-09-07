@@ -8,7 +8,7 @@ html {
 
 /* scrollbar customisation */
 ::-webkit-scrollbar {
-  @apply hidden h-2 w-2;
+  @apply hidden h-2 w-2 sm:block;
 }
 
 ::-webkit-scrollbar-track {
@@ -16,7 +16,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 opacity-20;
+  @apply rounded-full bg-gray-400;
 }
 
 body {
@@ -47,11 +47,11 @@ h3 {
 }
 
 input {
-  @apply rounded-lg border border-gray-300 bg-[#fafafa] px-2 py-1 text-neutral-dark01 focus:outline-primary-one;
+  @apply block rounded-lg border border-gray-300 bg-[#fafafa] px-2 py-1 text-neutral-dark01 focus:outline-primary-one;
 }
 
 label {
-  @apply text-sm font-medium text-neutral-dark01;
+  @apply block text-sm font-medium text-neutral-dark01;
 }
 
 button,
