@@ -23,7 +23,7 @@ const Navigation = () => {
             } flex w-20 flex-col items-center gap-1 text-center`}
           >
             <FormatListBulletedOutlined />
-            <span className="text-xs">Order stream</span>
+            <span className="text-xs">Orders</span>
           </Link>
         </li>
 
@@ -47,7 +47,7 @@ const Navigation = () => {
             } flex w-20 flex-col items-center gap-1 text-center`}
           >
             <FactCheckOutlined />
-            <span className="text-xs">Confirm order</span>
+            <span className="text-xs">Confirm</span>
           </Link>
         </li>
 
