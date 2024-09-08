@@ -18,6 +18,10 @@ const Home = async () => {
     redirect("/login");
   }
 
+  if (!user.cafeteria) {
+    redirect("/unauthorised");
+  }
+
   return (
     <main className="p-4">
       <div className="sticky top-0 border-b bg-neutral-light py-4">

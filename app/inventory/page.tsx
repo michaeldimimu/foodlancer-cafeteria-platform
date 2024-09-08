@@ -15,6 +15,10 @@ const InventoryPage = async () => {
     redirect("/login");
   }
 
+  if (!user.cafeteria) {
+    redirect("/unauthorised");
+  }
+
   return <div>InventoryPage</div>;
 };
 

@@ -24,6 +24,10 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
     redirect("/login");
   }
 
+  if (!user.cafeteria) {
+    redirect("/unauthorised");
+  }
+
   const order = await fetchOrder(params.slug);
 
   return (

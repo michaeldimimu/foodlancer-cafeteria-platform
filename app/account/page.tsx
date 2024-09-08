@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import getSession from "@/auth/lib/getSession";
 
 import BackButton from "../ui/back-button";
-import LogoutButton from "../ui/account/login-button";
+import LogoutButton from "../ui/account/logout-button";
 
 import { WhatsApp } from "@mui/icons-material";
 
@@ -19,6 +19,10 @@ const AccountPage = async () => {
 
   if (!user) {
     redirect("/login");
+  }
+
+  if (!user.cafeteria) {
+    redirect("/unauthorised");
   }
 
   return (
