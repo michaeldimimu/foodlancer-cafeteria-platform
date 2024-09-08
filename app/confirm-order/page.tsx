@@ -13,7 +13,7 @@ const ConfirmOrderPage = async () => {
   const user = session?.user;
 
   if (!user) {
-    redirect("/api/auth/signin?callbackUrl=/");
+    redirect("/login");
   }
 
   return (

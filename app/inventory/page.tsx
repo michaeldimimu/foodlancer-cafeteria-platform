@@ -1,11 +1,20 @@
+import getSession from "@/auth/lib/getSession";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Inventory",
   description: "Manage foods and availability",
 };
 
-const InventoryPage = () => {
+const InventoryPage = async () => {
+  const session = await getSession();
+  const user = session?.user;
+
+  if (!user) {
+    redirect("/login");
+  }
+
   return <div>InventoryPage</div>;
 };
 

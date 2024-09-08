@@ -4,10 +4,12 @@ import { OrderFoodItem, Plate } from "@/app/types/order";
 
 import BackButton from "@/app/ui/back-button";
 import ToggleConfirmOrderButton from "@/app/ui/orders/toggle-confirm-order-button";
+import getSession from "@/auth/lib/getSession";
 
 import { AccessTimeOutlined, CheckCircleOutline } from "@mui/icons-material";
 
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Order details",
@@ -15,6 +17,13 @@ export const metadata: Metadata = {
 };
 
 const OrderPage = async ({ params }: { params: { slug: string } }) => {
+  const session = await getSession();
+  const user = session?.user;
+
+  if (!user) {
+    redirect("/login");
+  }
+
   const order = await fetchOrder(params.slug);
 
   return (
