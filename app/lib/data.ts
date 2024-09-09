@@ -39,6 +39,6 @@ export async function fetchOrder(id: string | mongoose.Types.ObjectId) {
       .exec();
     return order;
   } catch (error) {
-    console.log("Error fetching order" + error);
+    throw new Error("Error fetching order" + error);
   }
 }

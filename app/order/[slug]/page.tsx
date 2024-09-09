@@ -3,17 +3,15 @@ import { fetchOrder } from "@/app/lib/data";
 import { OrderFoodItem, Plate } from "@/app/types/order";
 
 import BackButton from "@/app/ui/back-button";
-import ToggleConfirmOrderButton from "@/app/ui/orders/toggle-confirm-order-button";
+import OrderStatusTabs from "@/app/ui/orders/order-status-tabs";
 import getSession from "@/auth/lib/getSession";
-
-import { AccessTimeOutlined, CheckCircleOutline } from "@mui/icons-material";
 
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Order details",
-  description: "View the details of your order",
+  description: "View the details of an order",
 };
 
 const OrderPage = async ({ params }: { params: { slug: string } }) => {
@@ -42,20 +40,10 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         <p>{order.user.email}</p>
       </div>
 
-      <div className="mb-2">
-        <p className="font-medium text-neutral-dark01">Confirmation status</p>
-        {order.status === "confirmed" ? (
-          <div className="flex w-fit items-center gap-1 rounded-xl bg-green-100 px-2 py-1 text-green-700">
-            <span>{order.status}</span>
-            <CheckCircleOutline fontSize="inherit" />
-          </div>
-        ) : (
-          <div className="flex w-fit items-center gap-1 rounded-xl bg-yellow-100 px-2 py-1 text-yellow-700">
-            <span>{order.status}</span>
-            <AccessTimeOutlined fontSize="inherit" />
-          </div>
-        )}
-      </div>
+      <OrderStatusTabs
+        status={order.status}
+        confirmationId={order.confirmationId}
+      />
 
       <div className="mb-2">
         <p className="font-medium text-neutral-dark01">Ordered from</p>
@@ -105,11 +93,6 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         <p className="text-base font-medium">Total</p>
         <p className="text-lg font-medium">&#8358;{order.total}</p>
       </div>
-
-      <ToggleConfirmOrderButton
-        status={order.status}
-        confirmationId={order.confirmationId}
-      />
     </main>
   );
 };

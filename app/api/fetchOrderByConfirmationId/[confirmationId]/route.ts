@@ -13,7 +13,6 @@ export async function GET(
       { confirmationId: params.confirmationId },
       "_id",
     ).exec();
-    console.log(order);
 
     return Response.json(order);
   } catch (error) {

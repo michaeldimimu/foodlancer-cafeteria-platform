@@ -6,6 +6,7 @@ import {
   AccessTimeOutlined,
   ArrowForwardIosOutlined,
   CheckCircleOutlined,
+  ShoppingBagOutlined,
 } from "@mui/icons-material";
 
 const OrderItem = ({ order }: { order: Order }) => {
@@ -15,10 +16,12 @@ const OrderItem = ({ order }: { order: Order }) => {
       className="mt-2 flex items-center justify-between rounded-xl border border-gray-300 bg-white p-4 text-neutral-dark01"
     >
       <div className="flex items-center gap-4">
-        {order.status === "confirmed" ? (
+        {order.status === "ready" ? (
           <CheckCircleOutlined fontSize="large" className="text-green-600" />
+        ) : order.status === "preparing" ? (
+          <AccessTimeOutlined fontSize="large" className="text-yellow-500" />
         ) : (
-          <AccessTimeOutlined fontSize="large" />
+          <ShoppingBagOutlined fontSize="large" className="text-primary-one" />
         )}
 
         <div>
