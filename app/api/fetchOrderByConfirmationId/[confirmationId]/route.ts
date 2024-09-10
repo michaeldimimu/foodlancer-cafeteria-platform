@@ -1,6 +1,5 @@
 import dbConnect from "@/server/lib/dbConnect";
 import Order from "@/server/models/Order";
-import User from "@/server/models/User";
 
 export async function GET(
   request: Request,

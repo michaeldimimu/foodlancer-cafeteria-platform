@@ -29,7 +29,7 @@ const Navigation = () => {
 
         <li>
           <Link
-            href="/inventory"
+            href="/inventory?type=mains"
             className={`${
               pathname === "/inventory" && "text-primary-three"
             } flex w-20 flex-col items-center gap-1 text-center`}

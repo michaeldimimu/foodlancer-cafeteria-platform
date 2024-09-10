@@ -77,7 +77,7 @@ const FindOrderForm = () => {
         {isLoading ? (
           <div className="mt-4 flex flex-col items-center gap-2">
             <span className="h-8 w-8 animate-spin rounded-full border-2 border-primary-one border-t-transparent" />
-            <span className="text-xs sm:text-sm">Loading plate</span>
+            <span className="text-xs sm:text-sm">Loading order</span>
           </div>
         ) : (
           !order &&
