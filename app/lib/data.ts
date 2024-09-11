@@ -46,6 +46,26 @@ export async function fetchOrder(id: string | mongoose.Types.ObjectId) {
   }
 }
 
+export async function fetchCafeteria(cafeteriaName: string) {
+  await dbConnect();
+
+  try {
+    const cafeteria = await Cafeteria.findOne({ name: cafeteriaName })
+      .populate({
+        path: "menu.mains menu.sides",
+        populate: {
+          path: "food",
+          model: Food,
+        },
+      })
+      .exec();
+
+    return cafeteria;
+  } catch (error: any) {
+    throw new Error("An error occurred: " + error.message);
+  }
+}
+
 export async function fetchCafeteriaInventory(term: string, type: string) {
   const session = await getSession();
   const user = session?.user;

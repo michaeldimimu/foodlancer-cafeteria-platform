@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const MenuItemSchema = new Schema({
   food: { type: Schema.Types.ObjectId, ref: "Food", required: true },
   price: { type: Number, required: true },
+  available: { type: Boolean, required: true },
   quantity: { type: Number, min: 0, required: true },
 });
 

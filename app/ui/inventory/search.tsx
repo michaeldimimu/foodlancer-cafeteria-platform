@@ -47,13 +47,13 @@ const Search = () => {
   //     replace(`${pathname}?${params.toString()}`);
   //   }
 
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    if (!searchParams.get("type")) {
-      params.set("type", "mains");
-    }
-    replace(`${pathname}?${params.toString()}`);
-  }, []);
+  // useEffect(() => {
+  //   const params = new URLSearchParams(searchParams);
+  //   if (!searchParams.get("type")) {
+  //     params.set("type", "mains");
+  //   }
+  //   replace(`${pathname}?${params.toString()}`);
+  // }, []);
 
   return (
     <form>

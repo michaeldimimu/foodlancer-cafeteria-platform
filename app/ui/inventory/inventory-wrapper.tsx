@@ -2,9 +2,9 @@
 
 import { Cafeteria, MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import { useState } from "react";
-import MenuItem from "./menu-item";
+import InventoryItem from "./inventory-item";
 
-const MenuWrapper = (cafeteria: Cafeteria) => {
+const MenuWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
   const [category, setCategory] = useState("mains");
 
   return (
@@ -32,23 +32,21 @@ const MenuWrapper = (cafeteria: Cafeteria) => {
         </button>
       </div>
 
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {category === "mains"
-          ? cafeteria.menu.mains.map((item: MenuItemType) => (
-              <MenuItem
-                key={item._id.toString()}
-                item={item}
-                cafeteriaName={cafeteria.name}
-              />
-            ))
-          : cafeteria.menu.sides.map((item: MenuItemType) => (
-              <MenuItem
-                key={item._id.toString()}
-                item={item}
-                cafeteriaName={cafeteria.name}
-              />
-            ))}
-      </div>
+      {category === "mains"
+        ? cafeteria.menu.mains.map((item: MenuItemType) => (
+            <InventoryItem
+              key={item._id.toString()}
+              item={item}
+              category="mains"
+            />
+          ))
+        : cafeteria.menu.sides.map((item: MenuItemType) => (
+            <InventoryItem
+              key={item._id.toString()}
+              item={item}
+              category="sides"
+            />
+          ))}
     </>
   );
 };

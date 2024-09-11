@@ -3,20 +3,17 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Search from "../ui/inventory/search";
 import Results from "../ui/inventory/results";
+import { Suspense } from "react";
+import { fetchCafeteria } from "../lib/data";
+import { Cafeteria } from "../types/cafeteria";
+import InventoryWrapper from "../ui/inventory/inventory-wrapper";
 
 export const metadata: Metadata = {
   title: "Inventory",
   description: "Manage foods and availability",
 };
 
-const InventoryPage = async ({
-  searchParams,
-}: {
-  searchParams?: {
-    term?: string;
-    type?: string;
-  };
-}) => {
+const InventoryPage = async () => {
   const session = await getSession();
   const user = session?.user;
 
@@ -28,16 +25,14 @@ const InventoryPage = async ({
     redirect("/unauthorised");
   }
 
-  const term = searchParams?.term || "";
-  const type = searchParams?.type || "mains";
+  const cafeteria = await fetchCafeteria(user.cafeteria);
+  const parsedCafeteria = JSON.parse(JSON.stringify(cafeteria));
 
   return (
     <main className="p-4">
       <h1 className="mb-2 text-3xl font-bold">Inventory - {user.cafeteria}</h1>
 
-      <Search />
-
-      <Results term={term} type={type} />
+      <InventoryWrapper cafeteria={parsedCafeteria} />
     </main>
   );
 };
