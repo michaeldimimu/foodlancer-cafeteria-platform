@@ -1,7 +1,9 @@
 import { toggleAvailability } from "@/app/lib/actions";
 import { MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import Image from "next/image";
+import { useState } from "react";
 import { toast } from "react-toastify";
+import UpdateItemQuantity from "./update-item-quantity";
 
 const InventoryItem = ({
   item,
@@ -10,6 +12,8 @@ const InventoryItem = ({
   item: MenuItemType;
   category: string;
 }) => {
+  const [isShowingEditItemPopup, setIsShowingEditItemPopup] = useState(false);
+
   const handleToggleAvailability = async () => {
     const id = toast.loading("Please wait...");
     const response = await toggleAvailability(item.food._id, category);
@@ -58,8 +62,21 @@ const InventoryItem = ({
         >
           {item.quantity}
         </p>
-        <button className="font-medium text-primary-one">Edit</button>
+        <button
+          onClick={() => setIsShowingEditItemPopup(true)}
+          className="font-medium text-primary-one"
+        >
+          Edit
+        </button>
       </div>
+
+      {isShowingEditItemPopup && (
+        <UpdateItemQuantity
+          setIsShowingEditItemPopup={setIsShowingEditItemPopup}
+          item={item}
+          category={category}
+        />
+      )}
     </div>
   );
 };
