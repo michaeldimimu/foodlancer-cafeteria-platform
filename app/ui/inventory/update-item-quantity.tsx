@@ -5,11 +5,11 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 
 const UpdateItemQuantity = ({
-  setIsShowingEditItemPopup,
+  setIsShowingUpdateQuantityPopup,
   item,
   category,
 }: {
-  setIsShowingEditItemPopup: any;
+  setIsShowingUpdateQuantityPopup: any;
   item: MenuItem;
   category: string;
 }) => {
@@ -41,7 +41,7 @@ const UpdateItemQuantity = ({
   return (
     <>
       <div
-        onClick={() => setIsShowingEditItemPopup(false)}
+        onClick={() => setIsShowingUpdateQuantityPopup(false)}
         className="fixed inset-0 z-10 bg-black/20 backdrop-blur-sm"
       />
 
@@ -51,9 +51,13 @@ const UpdateItemQuantity = ({
         validationSchema={validationSchema}
       >
         <Form className="fixed left-1/2 top-1/2 z-20 w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white p-8 sm:w-[50%]">
+          <p className="mb-4 text-lg font-medium text-neutral-dark01">
+            Manually update quantity
+          </p>
+
           <div className="my-4">
             <label htmlFor="quantity" className="mb-2">
-              Quantity:
+              Quantity
             </label>
             <Field
               type="number"
@@ -64,9 +68,8 @@ const UpdateItemQuantity = ({
             />
 
             <p>
-              Try to reduce the quantity by at least 5 to give room for
-              conflicting orders. For example, if you have 20 items, enter 15
-              instead.
+              Always make sure you have extra in your cafeteria in case there is
+              a conflict with multiple orders.
             </p>
           </div>
 
@@ -78,7 +81,7 @@ const UpdateItemQuantity = ({
               Update
             </button>
             <button
-              onClick={() => setIsShowingEditItemPopup(false)}
+              onClick={() => setIsShowingUpdateQuantityPopup(false)}
               type="button"
               className="rounded-lg bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
             >

@@ -3,6 +3,7 @@ import { MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import IncreaseItemQuantity from "./increase-item-quantity";
 import UpdateItemQuantity from "./update-item-quantity";
 
 const InventoryItem = ({
@@ -12,7 +13,10 @@ const InventoryItem = ({
   item: MenuItemType;
   category: string;
 }) => {
-  const [isShowingEditItemPopup, setIsShowingEditItemPopup] = useState(false);
+  const [isShowingIncreaseQuantityPopup, setIsShowingIncreaseQuantityPopup] =
+    useState(false);
+  const [isShowingUpdateQuantityPopup, setIsShowingUpdateQuantityPopup] =
+    useState(false);
 
   const handleToggleAvailability = async () => {
     const id = toast.loading("Please wait...");
@@ -56,23 +60,32 @@ const InventoryItem = ({
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-between p-2">
-        <p
+      <div className="flex flex-col items-end justify-between p-2">
+        <button
+          onClick={() => setIsShowingUpdateQuantityPopup(true)}
           className={`${!item.available && "opacity-50"} grid h-8 w-8 place-content-center rounded-lg bg-primary-two p-1 font-medium text-white`}
         >
           {item.quantity}
-        </p>
+        </button>
         <button
-          onClick={() => setIsShowingEditItemPopup(true)}
+          onClick={() => setIsShowingIncreaseQuantityPopup(true)}
           className="font-medium text-primary-one"
         >
-          Edit
+          Add +
         </button>
       </div>
 
-      {isShowingEditItemPopup && (
+      {isShowingIncreaseQuantityPopup && (
+        <IncreaseItemQuantity
+          setIsShowingIncreaseQuantityPopup={setIsShowingIncreaseQuantityPopup}
+          item={item}
+          category={category}
+        />
+      )}
+
+      {isShowingUpdateQuantityPopup && (
         <UpdateItemQuantity
-          setIsShowingEditItemPopup={setIsShowingEditItemPopup}
+          setIsShowingUpdateQuantityPopup={setIsShowingUpdateQuantityPopup}
           item={item}
           category={category}
         />
