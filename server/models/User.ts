@@ -21,8 +21,9 @@ const CartSchema = new Schema({
 });
 
 const UserSchema = new Schema({
-  name:{ type: String, required: true },
-  school:{ type: String, required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  school: { type: String, required: true },
   email: { type: String, required: true },
   cart: CartSchema,
 });

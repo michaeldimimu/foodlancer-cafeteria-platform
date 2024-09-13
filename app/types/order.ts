@@ -15,7 +15,9 @@ export type Plate = {
 
 export type User = {
   _id: mongoose.Types.ObjectId;
-  name: string;
+  firstName: string;
+  lastName: string;
+  school: string;
   email: string;
 };
 
