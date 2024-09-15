@@ -20,13 +20,16 @@ const CartSchema = new Schema({
   processingFeePercentage: { type: Number, default: 10, required: true },
 });
 
-const UserSchema = new Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  school: { type: String, required: true },
-  email: { type: String, required: true },
-  cart: CartSchema,
-});
+const UserSchema = new Schema(
+  {
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    school: { type: String, required: true },
+    email: { type: String, required: true },
+    cart: CartSchema,
+  },
+  { timestamps: true },
+);
 
 function arrayLimit(val: any) {
   return val.length <= 5;

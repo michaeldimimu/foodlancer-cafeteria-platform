@@ -8,13 +8,16 @@ const MenuItemSchema = new Schema({
   quantity: { type: Number, min: 0, required: true },
 });
 
-const CafeteriaSchema = new Schema({
-  name: { type: String, required: true },
-  menu: {
-    mains: [MenuItemSchema],
-    sides: [MenuItemSchema],
+const CafeteriaSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    menu: {
+      mains: [MenuItemSchema],
+      sides: [MenuItemSchema],
+    },
   },
-});
+  { timestamps: true },
+);
 
 export default mongoose.models.Cafeteria ||
   mongoose.model("Cafeteria", CafeteriaSchema);
