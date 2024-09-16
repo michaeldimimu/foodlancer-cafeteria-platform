@@ -46,7 +46,7 @@ export default async function toggleAvailability(
       success: true,
       message: `Item set to ${!matchedItem.available ? "not" : ""} available`,
     };
-  } catch (error) {
+  } catch {
     return {
       success: false,
       message: "Could not change the availability of this item",

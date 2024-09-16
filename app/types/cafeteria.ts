@@ -23,4 +23,5 @@ export type Menu = {
 export type Cafeteria = {
   name: string;
   menu: Menu;
+  online: boolean;
 };

@@ -7,6 +7,8 @@ import BackButton from "../ui/back-button";
 import LogoutButton from "../ui/account/logout-button";
 
 import { WhatsApp } from "@mui/icons-material";
+import fetchCafeteria from "../lib/data/fetchCafeteria";
+import OnlineStatusToggle from "../ui/online-status-toggle";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -25,10 +27,16 @@ const AccountPage = async () => {
     redirect("/unauthorised");
   }
 
+  const cafeteria = await fetchCafeteria();
+
   return (
     <main className="p-4">
       <BackButton />
-      <h1 className="mb-4 mt-2 text-3xl font-bold">Account</h1>
+
+      <div className="flex items-center justify-between gap-2">
+        <h1 className="mb-4 mt-2 text-3xl font-bold">Account</h1>
+        <OnlineStatusToggle online={cafeteria.online} />
+      </div>
 
       <div className="mb-2">
         <p className="font-medium text-neutral-dark01">Email</p>

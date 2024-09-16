@@ -15,6 +15,7 @@ const CafeteriaSchema = new Schema(
       mains: [MenuItemSchema],
       sides: [MenuItemSchema],
     },
+    online: { type: Boolean, required: true },
   },
   { timestamps: true },
 );

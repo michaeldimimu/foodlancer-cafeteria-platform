@@ -4,7 +4,7 @@ import { Cafeteria, MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import { useState } from "react";
 import InventoryItem from "./inventory-item";
 
-const MenuWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
+const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
   const [category, setCategory] = useState("mains");
 
   return (
@@ -51,4 +51,4 @@ const MenuWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
   );
 };
 
-export default MenuWrapper;
+export default InventoryWrapper;
