@@ -36,7 +36,14 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
 
       <div className="mb-2">
         <p className="font-medium text-neutral-dark01">Ordered by</p>
-        <p>{order.user.email}</p>
+        <p>
+          <span className="text-neutral-dark01">Name:</span>{" "}
+          {order.user.firstName} {order.user.lastName}
+        </p>
+
+        <p>
+          <span className="text-neutral-dark01">Email:</span> {order.user.email}
+        </p>
       </div>
 
       <OrderStatusTabs
