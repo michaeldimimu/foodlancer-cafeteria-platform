@@ -29,7 +29,7 @@ const Home = async () => {
       </div>
 
       <Suspense fallback={<OrderStreamSkeleton />}>
-        <OrderStream cafeteriaName={user.cafeteria} />
+        <OrderStream />
       </Suspense>
     </main>
   );

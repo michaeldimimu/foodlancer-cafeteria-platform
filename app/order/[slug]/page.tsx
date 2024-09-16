@@ -1,5 +1,4 @@
-import { fetchOrder } from "@/app/lib/data";
-
+import fetchOrder from "@/app/lib/data/fetchOrder";
 import { OrderFoodItem, Plate } from "@/app/types/order";
 
 import BackButton from "@/app/ui/back-button";

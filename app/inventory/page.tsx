@@ -1,12 +1,8 @@
 import getSession from "@/auth/lib/getSession";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import Search from "../ui/inventory/search";
-import Results from "../ui/inventory/results";
-import { Suspense } from "react";
-import { fetchCafeteria } from "../lib/data";
-import { Cafeteria } from "../types/cafeteria";
 import InventoryWrapper from "../ui/inventory/inventory-wrapper";
+import fetchCafeteria from "../lib/data/fetchCafeteria";
 
 export const metadata: Metadata = {
   title: "Inventory",
@@ -25,7 +21,7 @@ const InventoryPage = async () => {
     redirect("/unauthorised");
   }
 
-  const cafeteria = await fetchCafeteria(user.cafeteria);
+  const cafeteria = await fetchCafeteria();
   const parsedCafeteria = JSON.parse(JSON.stringify(cafeteria));
 
   return (

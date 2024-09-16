@@ -1,11 +1,11 @@
-import { fetchOrderStream } from "@/app/lib/data";
+import fetchOrderStream from "@/app/lib/data/fetchOrderStream";
 import OrderItem from "./order-item";
 import { Order } from "@/app/types/order";
 
-const OrderStream = async ({ cafeteriaName }: { cafeteriaName: string }) => {
-  const orderStream = await fetchOrderStream(cafeteriaName);
+const OrderStream = async () => {
+  const orderStream = await fetchOrderStream();
 
-  if (orderStream.length === 0) {
+  if (orderStream?.length === 0) {
     return (
       <p className="mx-auto mt-16 max-w-[30ch] text-center text-xl">
         No orders yet! When a student places an order you should see it here.
