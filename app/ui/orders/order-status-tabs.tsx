@@ -1,7 +1,6 @@
 "use client";
 
-import { toggleConfirmOrder } from "@/app/lib/actions";
-import { Order } from "@/app/types/order";
+import toggleConfirmOrder from "@/app/lib/actions/order/toggleConfirmOrder";
 import {
   AccessTimeOutlined,
   CheckCircleOutline,

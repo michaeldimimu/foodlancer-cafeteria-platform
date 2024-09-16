@@ -1,4 +1,4 @@
-import { updateMenuItemQuantity } from "@/app/lib/actions";
+import updateMenuItemQuantity from "@/app/lib/actions/inventory/updateMenuItemQuantity";
 import { MenuItem } from "@/app/types/cafeteria";
 import { Formik, Form, Field } from "formik";
 import { toast } from "react-toastify";

@@ -1,4 +1,4 @@
-import { increaseMenuItemQuantity } from "@/app/lib/actions";
+import increaseMenuItemQuantity from "@/app/lib/actions/inventory/increaseMenuItemQuantity";
 import { MenuItem } from "@/app/types/cafeteria";
 import { Formik, Form, Field } from "formik";
 import { toast } from "react-toastify";
