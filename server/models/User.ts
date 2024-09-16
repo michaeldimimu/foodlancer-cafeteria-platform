@@ -26,6 +26,7 @@ const UserSchema = new Schema(
     lastName: { type: String, required: true },
     school: { type: String, required: true },
     email: { type: String, required: true },
+    discoverySource: { type: String, required: true },
     cart: CartSchema,
   },
   { timestamps: true },
