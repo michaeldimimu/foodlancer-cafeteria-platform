@@ -12,6 +12,15 @@ const PlateSchema = new Schema({
   price: { type: Number, required: true },
 });
 
+const statusSchema = new Schema({
+  value: {
+    type: String,
+    required: true,
+    enum: ["preparing", "ready", "denied", "claimed"],
+  },
+  message: { type: String },
+});
+
 const OrderSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
@@ -21,11 +30,7 @@ const OrderSchema = new Schema(
     processingFeePercentage: { type: Number, required: true, default: 10 },
     processingFee: { type: Number, min: 50, max: 200, required: true },
     total: { type: Number, required: true },
-    status: {
-      type: String,
-      required: true,
-      enum: ["preparing", "ready", "claimed"],
-    },
+    orderStatus: statusSchema,
     confirmationId: { type: Number, required: true, unique: true },
   },
   { timestamps: true },

@@ -68,6 +68,10 @@ button:disabled {
   opacity: 0.5;
 }
 
+button:disabled.not-opaque {
+  opacity: 1;
+}
+
 .darker-grotesque-font {
   font-family: var(--font-darker-grotesque);
 }

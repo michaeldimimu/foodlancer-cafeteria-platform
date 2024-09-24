@@ -4,9 +4,10 @@ import dbConnect from "@/server/lib/dbConnect";
 import Order from "@/server/models/Order";
 import { revalidatePath } from "next/cache";
 
-export default async function toggleConfirmOrder(
+export default async function setOrderStatus(
   confirmationId: string | number,
   value: string,
+  message: string,
 ) {
   await dbConnect();
   try {
@@ -14,7 +15,7 @@ export default async function toggleConfirmOrder(
       confirmationId: confirmationId,
     }).exec();
 
-    orderToToggle.status = value;
+    orderToToggle.orderStatus = { value, message };
 
     await orderToToggle.save();
 

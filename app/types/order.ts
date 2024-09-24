@@ -21,9 +21,14 @@ export type User = {
   email: string;
 };
 
+export type OrderStatus = {
+  value: string;
+  message: string;
+};
+
 export type PopulatedOrder = {
   _id: mongoose.Types.ObjectId;
-  status: string;
+  orderStatus: OrderStatus;
   confirmationId: string;
   createdAt: Date;
   cafeteria: string;
@@ -37,7 +42,7 @@ export type PopulatedOrder = {
 
 export type Order = {
   _id: mongoose.Types.ObjectId;
-  status: string;
+  orderStatus: OrderStatus;
   confirmationId: string;
   createdAt: Date;
   cafeteria: string;
