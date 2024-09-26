@@ -22,13 +22,13 @@ const ConfirmActionPopup = ({
         <p>Are you sure you want to {description}?</p>
         <div className="mt-4 flex gap-2">
           <button
-            className="rounded-lg bg-primary-one px-4 py-2 font-medium text-white"
+            className="rounded-xl bg-primary-one px-4 py-2 font-medium text-white"
             onClick={handler}
           >
             Yes
           </button>
           <button
-            className="rounded-lg bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
+            className="rounded-xl bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
             onClick={() =>
               setConfirmActionPopupState({ isShowing: false, message: "" })
             }

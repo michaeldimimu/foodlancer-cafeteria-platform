@@ -30,7 +30,7 @@ const InventoryItem = ({
   };
 
   return (
-    <div className="mb-2 flex justify-between gap-2 rounded-lg border border-gray-300 bg-white">
+    <div className="mb-2 flex justify-between gap-2 rounded-xl border border-gray-300 bg-white">
       <div className="flex gap-2">
         <Image
           src={item.food.img_url}
@@ -63,7 +63,7 @@ const InventoryItem = ({
       <div className="flex flex-col items-end justify-between p-2">
         <button
           onClick={() => setIsShowingUpdateQuantityPopup(true)}
-          className={`${!item.available && "opacity-50"} grid h-8 w-8 place-content-center rounded-lg bg-primary-two p-1 font-medium text-white`}
+          className={`${!item.available && "opacity-50"} grid h-8 w-8 place-content-center rounded-xl bg-primary-two p-1 font-medium text-white`}
         >
           {item.quantity}
         </button>

@@ -47,7 +47,7 @@ h3 {
 }
 
 input {
-  @apply block rounded-lg border border-gray-300 bg-[#fafafa] px-2 py-1 text-neutral-dark01 focus:outline-primary-one;
+  @apply block rounded-xl border border-gray-300 bg-[#fafafa] px-2 py-1 text-neutral-dark01 focus:outline-primary-one;
 }
 
 label {
@@ -77,7 +77,7 @@ button:disabled.not-opaque {
 }
 
 .btn {
-  @apply rounded-lg font-medium shadow-lg;
+  @apply rounded-xl font-medium shadow-lg;
 }
 
 .btn.btn-accent {

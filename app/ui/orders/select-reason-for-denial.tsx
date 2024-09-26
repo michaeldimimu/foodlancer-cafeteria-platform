@@ -80,13 +80,13 @@ const SelectReasonForDenial = ({
           <div className="mt-4 flex gap-2">
             <button
               type="submit"
-              className="rounded-lg bg-primary-one px-4 py-2 font-medium text-white"
+              className="rounded-xl bg-primary-one px-4 py-2 font-medium text-white"
             >
               Submit
             </button>
             <button
               type="button"
-              className="rounded-lg bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
+              className="rounded-xl bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
               onClick={() => setIsShowingDenialPopup(false)}
             >
               Cancel

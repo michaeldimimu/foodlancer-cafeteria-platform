@@ -76,14 +76,14 @@ const UpdateItemQuantity = ({
           <div className="flex gap-2">
             <button
               type="submit"
-              className="rounded-lg bg-primary-one px-4 py-2 font-medium text-white"
+              className="rounded-xl bg-primary-one px-4 py-2 font-medium text-white"
             >
               Update
             </button>
             <button
               onClick={() => setIsShowingUpdateQuantityPopup(false)}
               type="button"
-              className="rounded-lg bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
+              className="rounded-xl bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
             >
               Cancel
             </button>

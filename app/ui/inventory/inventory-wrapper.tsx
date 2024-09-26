@@ -16,7 +16,7 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
             category === "mains"
               ? "bg-primary-one text-white"
               : "bg-primary-one/10 text-primary-three"
-          } rounded-lg px-4 py-2 font-medium`}
+          } rounded-xl px-4 py-2 font-medium`}
         >
           Mains
         </button>
@@ -27,7 +27,7 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
             category === "sides"
               ? "bg-primary-one text-white"
               : "bg-primary-one/10 text-primary-three"
-          } rounded-lg px-4 py-2 font-medium`}
+          } rounded-xl px-4 py-2 font-medium`}
         >
           Sides
         </button>
@@ -38,7 +38,7 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
             category === "drinks"
               ? "bg-primary-one text-white"
               : "bg-primary-one/10 text-primary-three"
-          } rounded-lg px-4 py-2 font-medium`}
+          } rounded-xl px-4 py-2 font-medium`}
         >
           Drinks
         </button>

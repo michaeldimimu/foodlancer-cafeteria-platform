@@ -54,7 +54,7 @@ const IncreaseItemQuantity = ({
           <Form className="fixed left-1/2 top-1/2 z-20 w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white p-8 sm:w-[50%]">
             <p className="mb-4 flex items-center justify-between gap-2 text-lg font-medium text-neutral-dark01">
               <span>Increase quantity</span>
-              <span className="rounded-lg bg-primary-two p-2 text-white">
+              <span className="rounded-xl bg-primary-two p-2 text-white">
                 {Number(values.quantity) + item.quantity}
               </span>
             </p>
@@ -80,14 +80,14 @@ const IncreaseItemQuantity = ({
             <div className="flex gap-2">
               <button
                 type="submit"
-                className="rounded-lg bg-primary-one px-4 py-2 font-medium text-white"
+                className="rounded-xl bg-primary-one px-4 py-2 font-medium text-white"
               >
                 Increase by {values.quantity}
               </button>
               <button
                 onClick={() => setIsShowingIncreaseQuantityPopup(false)}
                 type="button"
-                className="rounded-lg bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
+                className="rounded-xl bg-primary-one/10 px-4 py-2 font-medium text-primary-three"
               >
                 Cancel
               </button>
