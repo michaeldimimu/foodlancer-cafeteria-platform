@@ -8,7 +8,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   theme: {
     logo: "/logo.svg",
     colorScheme: "light",
-    brandColor: "#b1b1ff",
   },
   trustHost: true,
   adapter: MongoDBAdapter(client) as Adapter,
