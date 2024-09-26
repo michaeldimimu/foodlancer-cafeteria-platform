@@ -18,6 +18,7 @@ export type MenuItem = {
 export type Menu = {
   mains: MenuItem[];
   sides: MenuItem[];
+  drinks: MenuItem[];
 };
 
 export type Cafeteria = {

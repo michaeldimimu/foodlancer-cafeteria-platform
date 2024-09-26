@@ -14,6 +14,7 @@ const CafeteriaSchema = new Schema(
     menu: {
       mains: [MenuItemSchema],
       sides: [MenuItemSchema],
+      drinks: [MenuItemSchema],
     },
     online: { type: Boolean, required: true },
   },

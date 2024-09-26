@@ -20,6 +20,7 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
         >
           Mains
         </button>
+
         <button
           onClick={() => setCategory("sides")}
           className={`${
@@ -29,6 +30,17 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
           } rounded-lg px-4 py-2 font-medium`}
         >
           Sides
+        </button>
+
+        <button
+          onClick={() => setCategory("drinks")}
+          className={`${
+            category === "drinks"
+              ? "bg-primary-one text-white"
+              : "bg-primary-one/10 text-primary-three"
+          } rounded-lg px-4 py-2 font-medium`}
+        >
+          Drinks
         </button>
       </div>
 
@@ -40,13 +52,21 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
               category="mains"
             />
           ))
-        : cafeteria.menu.sides.map((item: MenuItemType) => (
-            <InventoryItem
-              key={item._id.toString()}
-              item={item}
-              category="sides"
-            />
-          ))}
+        : category === "sides"
+          ? cafeteria.menu.sides.map((item: MenuItemType) => (
+              <InventoryItem
+                key={item._id.toString()}
+                item={item}
+                category="sides"
+              />
+            ))
+          : cafeteria.menu.drinks.map((item: MenuItemType) => (
+              <InventoryItem
+                key={item._id.toString()}
+                item={item}
+                category="drinks"
+              />
+            ))}
     </>
   );
 };

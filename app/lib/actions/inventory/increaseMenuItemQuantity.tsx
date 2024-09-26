@@ -35,6 +35,10 @@ export default async function increaseMenuItemQuantity(
       var matchedItem = cafeteria.menu.sides.find(
         (item: MenuItem) => item.food._id.toString() === itemId.toString(),
       );
+    } else if (category === "drinks") {
+      var matchedItem = cafeteria.menu.drinks.find(
+        (item: MenuItem) => item.food._id.toString() === itemId.toString(),
+      );
     }
 
     matchedItem.quantity += quantityToAdd;
