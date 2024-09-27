@@ -19,9 +19,9 @@ const darkerGrotesque = Darker_Grotesque({
   variable: "--font-darker-grotesque",
 });
 
-const APP_NAME = "Foodlancer";
-const APP_DEFAULT_TITLE = "Foodlancer";
-const APP_TITLE_TEMPLATE = "%s - Foodlancer App";
+const APP_NAME = "Foodlancer for Cafeterias";
+const APP_DEFAULT_TITLE = "Foodlancer for Cafeterias";
+const APP_TITLE_TEMPLATE = "%s - Foodlancer for Cafeterias";
 const APP_DESCRIPTION = "Foodlancer cafeteria management system";
 
 export const metadata: Metadata = {
