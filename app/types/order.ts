@@ -30,7 +30,7 @@ export type PopulatedOrder = {
   _id: mongoose.Types.ObjectId;
   orderStatus: OrderStatus;
   confirmationId: string;
-  createdAt: Date;
+  createdAt: string;
   cafeteria: string;
   plates: Plate[];
   user: User;
@@ -44,7 +44,7 @@ export type Order = {
   _id: mongoose.Types.ObjectId;
   orderStatus: OrderStatus;
   confirmationId: string;
-  createdAt: Date;
+  createdAt: string;
   cafeteria: string;
   plates: Plate[];
   user: mongoose.Types.ObjectId;

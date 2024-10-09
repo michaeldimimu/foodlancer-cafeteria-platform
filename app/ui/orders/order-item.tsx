@@ -29,10 +29,10 @@ const OrderItem = ({ order }: { order: Order }) => {
 
         <div>
           <div className="flex items-center gap-1 text-xs text-neutral-dark03">
-            <span>{order.createdAt.toDateString()}</span>
+            <span>{new Date(order.createdAt).toDateString()}</span>
             <span className="text-neutral-dark02">•</span>
             <span>
-              {order.createdAt.toLocaleTimeString("en-US", {
+              {new Date(order.createdAt).toLocaleTimeString("en-US", {
                 timeZone: "Africa/Lagos",
               })}
             </span>
