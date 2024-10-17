@@ -11,7 +11,6 @@ export type MenuItem = {
   _id: mongoose.Types.ObjectId;
   price: number;
   available: boolean;
-  quantity: number;
   food: Food;
 };
 
