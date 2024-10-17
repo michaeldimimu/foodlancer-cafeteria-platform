@@ -2,8 +2,6 @@ import { MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import IncreaseItemQuantity from "./increase-item-quantity";
-import UpdateItemQuantity from "./update-item-quantity";
 import toggleAvailability from "@/app/lib/actions/inventory/toggleAvailability";
 
 const InventoryItem = ({
@@ -13,11 +11,6 @@ const InventoryItem = ({
   item: MenuItemType;
   category: string;
 }) => {
-  const [isShowingIncreaseQuantityPopup, setIsShowingIncreaseQuantityPopup] =
-    useState(false);
-  const [isShowingUpdateQuantityPopup, setIsShowingUpdateQuantityPopup] =
-    useState(false);
-
   const handleToggleAvailability = async () => {
     const id = toast.loading("Please wait...");
     const response = await toggleAvailability(item.food._id, category);
@@ -59,37 +52,6 @@ const InventoryItem = ({
           </div>
         </div>
       </div>
-
-      <div className="flex flex-col items-end justify-between p-2">
-        <button
-          onClick={() => setIsShowingUpdateQuantityPopup(true)}
-          className={`${!item.available && "opacity-50"} grid h-8 w-8 place-content-center rounded-xl bg-primary-two p-1 font-medium text-white`}
-        >
-          {item.quantity}
-        </button>
-        <button
-          onClick={() => setIsShowingIncreaseQuantityPopup(true)}
-          className="font-medium text-primary-one"
-        >
-          Add +
-        </button>
-      </div>
-
-      {isShowingIncreaseQuantityPopup && (
-        <IncreaseItemQuantity
-          setIsShowingIncreaseQuantityPopup={setIsShowingIncreaseQuantityPopup}
-          item={item}
-          category={category}
-        />
-      )}
-
-      {isShowingUpdateQuantityPopup && (
-        <UpdateItemQuantity
-          setIsShowingUpdateQuantityPopup={setIsShowingUpdateQuantityPopup}
-          item={item}
-          category={category}
-        />
-      )}
     </div>
   );
 };
