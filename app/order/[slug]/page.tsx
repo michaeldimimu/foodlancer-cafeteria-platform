@@ -94,6 +94,10 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         <p className="font-medium">Processing fee</p>
         <p className="text-base font-medium">&#8358;{order.processingFee}</p>
       </div>
+      <div className="my-2 flex items-center justify-between text-neutral-dark01">
+        <p className="font-medium">Discount (test user)</p>
+        <p className="text-base font-medium">-&#8358;{order.processingFee}</p>
+      </div>
       <hr />
       <div className="my-2 flex items-center justify-between text-neutral-dark01">
         <p className="text-base font-medium">Total</p>
