@@ -15,7 +15,7 @@ export default async function fetchCafeteria() {
   try {
     const cafeteria = await Cafeteria.findOne({ name: session.user.cafeteria })
       .populate({
-        path: "menu.mains menu.sides menu.drinks",
+        path: "menu.mains menu.sides menu.drinks menu.swallow menu.soups",
         populate: {
           path: "food",
           model: Food,

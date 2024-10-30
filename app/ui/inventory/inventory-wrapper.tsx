@@ -9,7 +9,7 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
 
   return (
     <>
-      <div className="mb-4 flex gap-2">
+      <div className="mb-4 flex gap-2 overflow-x-scroll">
         <button
           onClick={() => setCategory("mains")}
           className={`${
@@ -42,6 +42,28 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
         >
           Drinks
         </button>
+
+        <button
+          onClick={() => setCategory("swallow")}
+          className={`${
+            category === "swallow"
+              ? "bg-primary-one text-white"
+              : "bg-primary-one/10 text-primary-three"
+          } rounded-xl px-4 py-2 font-medium`}
+        >
+          Swallow
+        </button>
+
+        <button
+          onClick={() => setCategory("soups")}
+          className={`${
+            category === "soups"
+              ? "bg-primary-one text-white"
+              : "bg-primary-one/10 text-primary-three"
+          } rounded-xl px-4 py-2 font-medium`}
+        >
+          Soups
+        </button>
       </div>
 
       {category === "mains"
@@ -60,13 +82,29 @@ const InventoryWrapper = ({ cafeteria }: { cafeteria: Cafeteria }) => {
                 category="sides"
               />
             ))
-          : cafeteria.menu.drinks.map((item: MenuItemType) => (
-              <InventoryItem
-                key={item._id.toString()}
-                item={item}
-                category="drinks"
-              />
-            ))}
+          : category === "drinks"
+            ? cafeteria.menu.drinks.map((item: MenuItemType) => (
+                <InventoryItem
+                  key={item._id.toString()}
+                  item={item}
+                  category="drinks"
+                />
+              ))
+            : category === "swallow"
+              ? cafeteria.menu.swallow.map((item: MenuItemType) => (
+                  <InventoryItem
+                    key={item._id.toString()}
+                    item={item}
+                    category="swallow"
+                  />
+                ))
+              : cafeteria.menu.soups.map((item: MenuItemType) => (
+                  <InventoryItem
+                    key={item._id.toString()}
+                    item={item}
+                    category="soups"
+                  />
+                ))}
     </>
   );
 };
