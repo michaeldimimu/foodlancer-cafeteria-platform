@@ -5,6 +5,7 @@ export type Food = {
   name: string;
   img_url: string;
   type: string;
+  subcat?: string;
 };
 
 export type MenuItem = {
