@@ -5,6 +5,7 @@ import OrderItem from "./order-item";
 import { Order } from "@/app/types/order";
 import fetchOrderStream from "@/app/lib/data/fetchOrderStream";
 import { useInView } from "react-intersection-observer";
+import { useRouter } from "next/navigation";
 
 type OrderListProps = {
   initialOrders: Order[];
@@ -17,6 +18,7 @@ const OrderStream = ({ initialOrders }: OrderListProps) => {
   const [orders, setOrders] = useState<Order[]>(initialOrders);
   const [isShowingLoadingSpinner, setIsShowingLoadingSpinner] = useState(true);
   const { ref, inView } = useInView();
+  const router = useRouter();
 
   const loadMoreOrders = async () => {
     const fetchedOrders = await fetchOrderStream(
@@ -33,11 +35,23 @@ const OrderStream = ({ initialOrders }: OrderListProps) => {
     }
   };
 
+  const refreshOrders = async () => {
+    const initialOrders = await fetchOrderStream(0, 20);
+    setOrders(initialOrders);
+  };
+
   useEffect(() => {
     if (inView) {
       loadMoreOrders();
     }
   }, [inView]);
+
+  useEffect(() => {
+    const interval = setInterval(refreshOrders, 10000); // 10000 milliseconds = 10 seconds
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(interval);
+  }, [router]);
 
   return (
     <>
