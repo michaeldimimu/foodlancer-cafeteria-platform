@@ -21,8 +21,7 @@ export default async function fetchOrderStream(offset: number, limit: number) {
       .sort({ createdAt: -1 })
       .exec();
 
-    console.log("Fetched order stream!", orderHistory[0]);
-
+    revalidatePath("/");
     return JSON.parse(JSON.stringify(orderHistory));
   } catch (error: any) {
     throw new Error(error.message);
