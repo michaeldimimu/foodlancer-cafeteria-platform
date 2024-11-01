@@ -72,7 +72,7 @@ const SelectReasonForDenial = ({
           </div>
           <div className="mb-2 flex items-center gap-2">
             <Field type="radio" name="message" value="Your order is invalid" />
-            <label htmlFor="message">User's order is invalid</label>
+            <label htmlFor="message">User&apos;s order is invalid</label>
           </div>
           <div className="flex items-center gap-2">
             <Field type="radio" name="message" value="Undisclosed reason" />
