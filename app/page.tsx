@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import OrderStream from "./ui/orders/order-stream";
 import { Metadata } from "next";
 import fetchOrderStream from "./lib/data/fetchOrderStream";
+import FCMTokenDisplay from "./ui/generate-fcm-token";
 
 export const metadata: Metadata = {
   title: "Order stream",
@@ -33,6 +34,7 @@ const Home = async () => {
 
   return (
     <main className="p-4">
+      <FCMTokenDisplay />
       <div className="sticky top-0 border-b bg-neutral-light py-4">
         <h1 className="text-3xl font-bold">Order stream - {user.cafeteria}</h1>
       </div>
