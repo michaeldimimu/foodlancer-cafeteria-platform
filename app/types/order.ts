@@ -52,4 +52,5 @@ export type Order = {
   processingFeePercentage: number;
   subTotal: number;
   total: number;
+  fcmToken: string;
 };
