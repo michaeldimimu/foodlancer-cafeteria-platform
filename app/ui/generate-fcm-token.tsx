@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 const FCMTokenDisplay = () => {
   const { messages, fcmToken } = useFCM();
-  console.log(fcmToken);
 
   useEffect(() => {
     if (fcmToken !== null) {
