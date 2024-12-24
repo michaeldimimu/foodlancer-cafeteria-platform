@@ -18,7 +18,7 @@ const CafeteriaSchema = new Schema(
       soups: [MenuItemSchema],
     },
     online: { type: Boolean, required: true },
-    fcmToken: { type: String },
+    fcmTokens: [{ type: String }],
   },
   { timestamps: true },
 );

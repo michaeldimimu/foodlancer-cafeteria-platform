@@ -27,5 +27,5 @@ export type Cafeteria = {
   name: string;
   menu: Menu;
   online: boolean;
-  fcmToken?: string;
+  fcmTokens?: [string];
 };

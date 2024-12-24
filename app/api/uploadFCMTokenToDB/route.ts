@@ -11,17 +11,26 @@ export async function POST(request: Request) {
 
     // Update the FCM token in the database
     await dbConnect();
+
     const cafeteria = await Cafeteria.findOne({
       name: session?.user.cafeteria,
     });
-    cafeteria.fcmToken = fcmToken;
+
+    // Do not push duplicate tokens to the database
+    if (cafeteria.fcmTokens.includes(fcmToken))
+      return Response.json({
+        success: true,
+        message: "This token already exists on the database",
+      });
+
+    cafeteria.fcmTokens.push(fcmToken);
     await cafeteria.save();
 
-    return Response.json({ success: true, message: "FCM Token updated" });
+    return Response.json({ success: true, message: "FCM Tokens updated" });
   } catch (error) {
     return Response.json({
       success: false,
-      message: "Could not update FCM Token",
+      message: "Could not update FCM Tokens",
     });
   }
 }
