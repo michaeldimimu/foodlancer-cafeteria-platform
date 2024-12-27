@@ -22,7 +22,7 @@ export type User = {
 };
 
 export type OrderStatus = {
-  value: string;
+  value: "preparing" | "ready" | "denied" | "claimed" | "cancelled";
   message: string;
 };
 

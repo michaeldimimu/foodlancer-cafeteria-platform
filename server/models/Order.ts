@@ -16,7 +16,7 @@ const statusSchema = new Schema({
   value: {
     type: String,
     required: true,
-    enum: ["preparing", "ready", "denied", "claimed"],
+    enum: ["preparing", "ready", "denied", "claimed", "cancelled"],
   },
   message: { type: String },
 });
