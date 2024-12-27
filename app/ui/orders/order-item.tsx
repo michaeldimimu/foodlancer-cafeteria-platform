@@ -5,6 +5,7 @@ import { Order } from "@/app/types/order";
 import {
   AccessTimeOutlined,
   ArrowForwardIosOutlined,
+  CancelScheduleSendOutlined,
   CheckCircleOutlined,
   HighlightOffOutlined,
   ShoppingBagOutlined,
@@ -23,8 +24,13 @@ const OrderItem = ({ order }: { order: Order }) => {
           <AccessTimeOutlined fontSize="large" className="text-yellow-500" />
         ) : order.orderStatus.value === "denied" ? (
           <HighlightOffOutlined fontSize="large" className="text-red-500" />
-        ) : (
+        ) : order.orderStatus.value === "claimed" ? (
           <ShoppingBagOutlined fontSize="large" className="text-primary-one" />
+        ) : (
+          <CancelScheduleSendOutlined
+            fontSize="large"
+            className="text-red-500"
+          />
         )}
 
         <div>
