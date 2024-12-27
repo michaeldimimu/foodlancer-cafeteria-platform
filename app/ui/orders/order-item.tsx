@@ -29,7 +29,7 @@ const OrderItem = ({ order }: { order: Order }) => {
         ) : (
           <CancelScheduleSendOutlined
             fontSize="large"
-            className="text-red-500"
+            className="text-gray-300"
           />
         )}
 

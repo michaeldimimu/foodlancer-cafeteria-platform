@@ -52,7 +52,7 @@ const OrderStatusTabs = ({
         <p className="font-medium text-neutral-dark01">Order status</p>
 
         {status === "cancelled" ? (
-          <div className="flex w-fit items-center gap-1 rounded-full border border-red-700 bg-red-100 px-4 py-1 text-red-700">
+          <div className="flex w-fit items-center gap-1 rounded-full border border-gray-500 bg-gray-100 px-4 py-1 text-gray-500">
             <span>Cancelled</span>
             <CancelScheduleSendOutlined fontSize="inherit" />
           </div>
