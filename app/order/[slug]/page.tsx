@@ -59,7 +59,11 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
       <div>
         <p className="font-medium text-neutral-dark01">Date ordered</p>
         <p>{order.createdAt.toDateString()}</p>
-        <p>{order.createdAt.toLocaleTimeString("en-US")}</p>
+        <p>
+          {order.createdAt.toLocaleTimeString("en-US", {
+            timeZone: "Africa/Lagos",
+          })}
+        </p>
       </div>
 
       <hr className="mt-4" />
