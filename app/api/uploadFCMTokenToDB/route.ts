@@ -7,7 +7,6 @@ export async function POST(request: Request) {
     const session = await getSession();
 
     const { fcmToken } = await request.json();
-    console.log("Request body: " + fcmToken);
 
     // Update the FCM token in the database
     await dbConnect();
