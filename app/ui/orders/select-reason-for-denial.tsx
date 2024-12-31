@@ -2,6 +2,29 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import TextError from "../text-error";
 
+const possibleReasonsForDenial = [
+  {
+    id: 0,
+    reason: "One or more items are no longer available",
+  },
+  {
+    id: 1,
+    reason: "Not taking orders at the moment",
+  },
+  {
+    id: 2,
+    reason: "Order is invalid",
+  },
+  {
+    id: 3,
+    reason: "No pick up",
+  },
+  {
+    id: 4,
+    reason: "Other",
+  },
+];
+
 const SelectReasonForDenial = ({
   setIsShowingDenialPopup,
   handleSetOrderStatus,
@@ -50,34 +73,12 @@ const SelectReasonForDenial = ({
             for the denial
           </p>
 
-          <div className="mb-2 flex items-center gap-2">
-            <Field
-              type="radio"
-              name="message"
-              value="One or more items are no longer available"
-            />
-            <label htmlFor="message">
-              One or more items are no longer available
-            </label>
-          </div>
-          <div className="mb-2 flex items-center gap-2">
-            <Field
-              type="radio"
-              name="message"
-              value="We are not taking orders at the moment"
-            />
-            <label htmlFor="message">
-              We are not taking orders at the moment
-            </label>
-          </div>
-          <div className="mb-2 flex items-center gap-2">
-            <Field type="radio" name="message" value="Your order is invalid" />
-            <label htmlFor="message">User&apos;s order is invalid</label>
-          </div>
-          <div className="flex items-center gap-2">
-            <Field type="radio" name="message" value="Undisclosed reason" />
-            <label htmlFor="message">Other</label>
-          </div>
+          {possibleReasonsForDenial.map((item) => (
+            <div key={item.id} className="mb-2 flex items-center gap-2">
+              <Field type="radio" name="message" value={item.reason} />
+              <label htmlFor="message">{item.reason}</label>
+            </div>
+          ))}
 
           <ErrorMessage name="message" component={TextError} />
 
