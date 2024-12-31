@@ -9,6 +9,11 @@ if (!MONGODB_URI) {
 }
 
 async function dbConnect() {
+  if (mongoose.connection.readyState >= 1) {
+    console.log("Already connected to MongoDB");
+    return;
+  }
+
   try {
     MONGODB_URI && mongoose.connect(MONGODB_URI);
     console.log("Connected to MongoDB");
