@@ -28,7 +28,8 @@ const UserSchema = new Schema(
     email: { type: String, required: true },
     discoverySource: { type: String, required: true },
     cart: CartSchema,
-    wantsInAppPayment: { type: Boolean},
+    wantsInAppPayment: { type: Boolean },
+    coins: { type: Number, required: true },
   },
   { timestamps: true },
 );
