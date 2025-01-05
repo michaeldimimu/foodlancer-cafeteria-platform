@@ -4,6 +4,7 @@ import { OrderFoodItem, Plate } from "@/app/types/order";
 import BackButton from "@/app/ui/back-button";
 import OrderStatusTabs from "@/app/ui/orders/order-status-tabs";
 import getSession from "@/auth/lib/getSession";
+import { TollOutlined } from "@mui/icons-material";
 
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
@@ -97,6 +98,13 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
       <div className="my-2 flex items-center justify-between text-neutral-dark01">
         <p className="font-medium">Processing fee</p>
         <p className="text-base font-medium">&#8358;{order.processingFee}</p>
+      </div>
+      <div className="my-2 flex items-center justify-between text-neutral-dark01">
+        <p className="font-medium">FL Coins used</p>
+        <div className="flex items-center text-base font-medium">
+          <TollOutlined fontSize="inherit" />
+          <span>{order.coinsUsed}</span>
+        </div>
       </div>
       <hr />
       <div className="my-2 flex items-center justify-between text-neutral-dark01">

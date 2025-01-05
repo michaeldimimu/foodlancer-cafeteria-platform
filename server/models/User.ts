@@ -18,6 +18,7 @@ const CartSchema = new Schema({
     validate: [arrayLimit, "{PATH} exceeds the limit of 5"],
   },
   processingFeePercentage: { type: Number, default: 10, required: true },
+  isUsingFLCoins: { type: Boolean, default: false, required: true },
 });
 
 const UserSchema = new Schema(

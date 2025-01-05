@@ -38,6 +38,7 @@ export type PopulatedOrder = {
   processingFeePercentage: number;
   subTotal: number;
   total: number;
+  coinsUsed: number;
 };
 
 export type Order = {

@@ -30,6 +30,7 @@ const OrderSchema = new Schema(
     processingFeePercentage: { type: Number, required: true, default: 10 },
     processingFee: { type: Number, min: 50, max: 200, required: true },
     total: { type: Number, required: true },
+    coinsUsed: { type: Number, required: true },
     orderStatus: statusSchema,
     confirmationId: { type: Number, required: true, unique: true },
     fcmToken: { type: String, required: true },
