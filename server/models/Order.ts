@@ -33,7 +33,7 @@ const OrderSchema = new Schema(
     coinsUsed: { type: Number, required: true },
     orderStatus: statusSchema,
     confirmationId: { type: Number, required: true, unique: true },
-    fcmToken: { type: String, required: true },
+    fcmTokens: [{ type: String, required: true }],
   },
   { timestamps: true },
 );

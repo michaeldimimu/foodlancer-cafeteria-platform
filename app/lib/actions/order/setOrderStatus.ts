@@ -42,16 +42,19 @@ export default async function setOrderStatus(
           ? (notificationDetails = `We're so sorry, but the cafeteria denied your order: ${message}`)
           : (notificationDetails = `You have successfully claimed your order. Thank you for using Foodlancer, and enjoy your meal!`);
 
-    await sendNotificationToUser(
-      orderToToggle.fcmToken,
-      notificationTitle,
-      notificationDetails,
-    );
+    orderToToggle.fcmTokens.forEach(async (fcmToken: string) => {
+      await sendNotificationToUser(
+        fcmToken,
+        notificationTitle,
+        notificationDetails,
+      );
+    });
 
     revalidatePath("/order/[slug]", "page");
 
     return { success: true, message: "Success!" };
   } catch (error: any) {
+    console.log(error);
     return { success: false, message: "Couldn't perform this operation" };
   }
 }

@@ -2,10 +2,9 @@
 
 import useFCM from "@/app/utils/hooks/useFCM";
 import axios from "axios";
-import { log } from "console";
 import { useEffect } from "react";
 
-const FCMTokenDisplay = () => {
+const GenerateFCMToken = () => {
   const { messages, fcmToken } = useFCM();
 
   useEffect(() => {
@@ -19,4 +18,4 @@ const FCMTokenDisplay = () => {
   return null;
 };
 
-export default FCMTokenDisplay;
+export default GenerateFCMToken;

@@ -31,6 +31,7 @@ const UserSchema = new Schema(
     cart: CartSchema,
     wantsInAppPayment: { type: Boolean },
     coins: { type: Number, required: true },
+    fcmTokens: [{ type: String }],
   },
   { timestamps: true },
 );
