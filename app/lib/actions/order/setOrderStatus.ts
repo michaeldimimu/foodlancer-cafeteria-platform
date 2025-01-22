@@ -21,35 +21,34 @@ export default async function setOrderStatus(
     await orderToToggle.save();
 
     // Send a notification to the user about their order's updated status
-    let notification = { title: "", details: "" };
+    let notification = { title: "", body: "" };
 
     // Dynamically set the value of the notification title
     value === "preparing"
       ? (notification = {
           title: "Preparing your order...",
-          details:
-            "Your order was successfully received and is now being prepared",
+          body: "Your order was successfully received and is now being prepared",
         })
       : value === "ready"
         ? (notification = {
             title: "Your order is ready for pickup",
-            details: `You can now pick up your order from the cafeteria! Don't forget the Confirmation ID of the order: ${confirmationId}`,
+            body: `You can now pick up your order from the cafeteria! Don't forget the Confirmation ID of the order: ${confirmationId}`,
           })
         : value === "denied"
           ? (notification = {
               title: "Your order has been denied",
-              details: `We're so sorry, but the cafeteria denied your order: ${message}`,
+              body: `We're so sorry, but the cafeteria denied your order: ${message}`,
             })
           : (notification = {
               title: "Order successfully claimed",
-              details: `You have successfully claimed your order. Thank you for using Foodlancer, and enjoy your meal!`,
+              body: `You have successfully claimed your order. Thank you for using Foodlancer, and enjoy your meal!`,
             });
 
     orderToToggle.fcmTokens.forEach(async (fcmToken: string) => {
       await sendNotificationToUser(
         fcmToken,
         notification.title,
-        notification.details,
+        notification.body,
       );
     });
 
