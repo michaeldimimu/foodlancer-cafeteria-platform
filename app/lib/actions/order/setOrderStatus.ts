@@ -4,6 +4,7 @@ import dbConnect from "@/server/lib/dbConnect";
 import Order from "@/server/models/Order";
 import { revalidatePath } from "next/cache";
 import sendNotificationToUser from "../sendNotificationToUser";
+import User from "@/server/models/User";
 
 export default async function setOrderStatus(
   confirmationId: string | number,
@@ -16,7 +17,14 @@ export default async function setOrderStatus(
       confirmationId: confirmationId,
     }).exec();
 
+    const user = await User.findOne({ _id: orderToToggle.user }).exec();
+
     orderToToggle.orderStatus = { value, message };
+
+    if (value === "claimed") {
+      user.coins += 10;
+      await user.save();
+    }
 
     await orderToToggle.save();
 
@@ -40,7 +48,8 @@ export default async function setOrderStatus(
               body: `We're so sorry, but the cafeteria denied your order: ${message}`,
             })
           : (notification = {
-              title: "Order successfully claimed",
+              title:
+                "Order successfully claimed - You have received 10 FL Coins!",
               body: `You have successfully claimed your order. Thank you for using Foodlancer, and enjoy your meal!`,
             });
 
