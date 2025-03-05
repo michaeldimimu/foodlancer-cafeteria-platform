@@ -13,7 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: MongoDBAdapter(client) as Adapter,
   providers: [
     Resend({
-      from: "no-reply@chotenlabs.com",
+      from: "no-reply@foodlancerapp.com",
     }),
   ],
 });
