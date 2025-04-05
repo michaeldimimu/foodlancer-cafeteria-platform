@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { DeliveryDetailsSchema } from "./User";
 const { Schema } = mongoose;
 
 const FoodItemSchema = new Schema({
@@ -16,7 +17,16 @@ const statusSchema = new Schema({
   value: {
     type: String,
     required: true,
-    enum: ["preparing", "ready", "denied", "claimed", "cancelled"],
+    enum: [
+      "confirming",
+      "confirmed",
+      "denied",
+      "cancelled",
+      "paid",
+      "delivering",
+      "delivered",
+      "claimed",
+    ],
   },
   message: { type: String },
 });
@@ -33,7 +43,8 @@ const OrderSchema = new Schema(
     coinsUsed: { type: Number, required: true },
     orderStatus: statusSchema,
     confirmationId: { type: Number, required: true, unique: true },
-    fcmTokens: [{ type: String, required: true }],
+    fcmTokens: [{ type: String }],
+    deliveryDetails: DeliveryDetailsSchema,
   },
   { timestamps: true },
 );

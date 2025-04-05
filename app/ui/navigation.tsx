@@ -13,7 +13,7 @@ import {
 const Navigation = () => {
   const pathname = usePathname();
   return (
-    <nav className="fixed bottom-0 left-0 w-full rounded-t-xl border border-gray-300 bg-white p-2">
+    <nav className="fixed bottom-0 left-1/2 w-full -translate-x-1/2 rounded-t-xl border border-gray-300 bg-white p-2 sm:w-3/4 lg:w-2/4">
       <ul className="flex items-center justify-around">
         <li>
           <Link

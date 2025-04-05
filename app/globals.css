@@ -24,6 +24,10 @@ body {
   @apply bg-[#fafafa] text-sm leading-[160%] tracking-tight text-neutral-dark03 sm:text-base;
 }
 
+main {
+  @apply sm:mx-auto sm:w-3/4 lg:w-2/4;
+}
+
 h1,
 h2,
 h3,
@@ -46,7 +50,9 @@ h3 {
   @apply text-2xl;
 }
 
-input {
+input,
+select,
+textarea {
   @apply block rounded-xl border border-gray-300 bg-[#fafafa] px-2 py-1 text-neutral-dark01 focus:outline-primary-one;
 }
 

@@ -49,6 +49,7 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
 
       <OrderStatusTabs
         status={order.orderStatus.value}
+        message={order.orderStatus.message}
         confirmationId={order.confirmationId}
       />
 
