@@ -14,6 +14,14 @@ export type Plate = {
   price: number;
 };
 
+export type User = {
+  _id: mongoose.Types.ObjectId;
+  firstName: string;
+  lastName: string;
+  school: string;
+  email: string;
+};
+
 export type OrderStatus = {
   value:
     | "confirming"
@@ -25,6 +33,21 @@ export type OrderStatus = {
     | "delivered"
     | "claimed";
   message: string;
+};
+
+export type PopulatedOrder = {
+  _id: mongoose.Types.ObjectId;
+  orderStatus: OrderStatus;
+  confirmationId: string;
+  createdAt: string;
+  cafeteria: string;
+  plates: Plate[];
+  user: User;
+  processingFee: number;
+  processingFeePercentage: number;
+  subTotal: number;
+  total: number;
+  coinsUsed: number;
 };
 
 export type Order = {
