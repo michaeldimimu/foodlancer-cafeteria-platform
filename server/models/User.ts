@@ -52,6 +52,7 @@ const UserSchema = new Schema(
     wantsInAppPayment: { type: Boolean },
     coins: { type: Number, required: true },
     fcmTokens: [{ type: String }],
+    lastUsedDeliveryLocation: { type: DeliveryLocationSchema },
     createdAt: { type: Date, required: true },
   },
   { timestamps: true },

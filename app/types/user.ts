@@ -56,4 +56,5 @@ export type User = {
   wantsInAppPayment: boolean;
   coins: number;
   fcmTokens?: [string];
+  lastUsedDeliveryLocation: DeliveryLocation;
 };
