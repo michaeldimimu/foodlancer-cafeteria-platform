@@ -68,6 +68,20 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         </p>
       </div>
 
+      {order.deliveryDetails?.deliveryLocation?.hostel && (
+        <div className="mt-2">
+          <p className="font-medium text-neutral-dark01">Deivering to</p>
+          <p className="capitalize">
+            {order.deliveryDetails.deliveryLocation.hostel}
+            {order.deliveryDetails.deliveryLocation.floor &&
+              `, ${order.deliveryDetails.deliveryLocation.floor} floor`}
+            {order.deliveryDetails.deliveryLocation.block &&
+              `, ${order.deliveryDetails.deliveryLocation.block} block`}
+            {`, room ${order.deliveryDetails.deliveryLocation.room}`}
+          </p>
+        </div>
+      )}
+
       <hr className="mt-4" />
 
       <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
