@@ -23,9 +23,16 @@ export type Menu = {
   soups: MenuItem[];
 };
 
+export type DeliveryFeeBreakdown = {
+  locationName: string;
+  distance: "long" | "short";
+};
+
 export type Cafeteria = {
+  _id: mongoose.Types.ObjectId;
   name: string;
   menu: Menu;
   online: boolean;
   fcmTokens?: [string];
+  deliveryFeeBreakdown: DeliveryFeeBreakdown[];
 };

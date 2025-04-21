@@ -47,6 +47,7 @@ const UserSchema = new Schema(
     sex: { type: String, required: true, enum: ["male", "female"] },
     school: { type: String, required: true },
     email: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
     discoverySource: { type: String, required: true },
     cart: CartSchema,
     wantsInAppPayment: { type: Boolean },

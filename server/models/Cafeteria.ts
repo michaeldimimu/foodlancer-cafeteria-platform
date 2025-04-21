@@ -7,6 +7,11 @@ const MenuItemSchema = new Schema({
   available: { type: Boolean, required: true },
 });
 
+const DeliveryFeeBreakdownSchema = new Schema({
+  locationName: { type: String, required: true },
+  distance: { type: String, enum: ["long", "short"], required: true },
+});
+
 const CafeteriaSchema = new Schema(
   {
     name: { type: String, required: true },
@@ -18,6 +23,7 @@ const CafeteriaSchema = new Schema(
       soups: [MenuItemSchema],
     },
     online: { type: Boolean, required: true },
+    deliveryFeeBreakdown: [DeliveryFeeBreakdownSchema],
     fcmTokens: [{ type: String }],
   },
   { timestamps: true },
