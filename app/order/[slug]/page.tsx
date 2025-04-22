@@ -111,8 +111,15 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         <p className="text-base font-medium">&#8358;{order.subTotal}</p>
       </div>
       <div className="my-2 flex items-center justify-between text-neutral-dark01">
-        <p className="font-medium">Processing fee</p>
-        <p className="text-base font-medium">&#8358;{order.processingFee}</p>
+        {order.deliveryDetails?.deliveryLocation?.hostel ? (
+          <p className="font-medium">Delivery fee</p>
+        ) : (
+          <p className="font-medium">Processing fee</p>
+        )}
+
+        <p className="text-base font-medium">
+          &#8358;{order.charges ?? order.processingFee}
+        </p>
       </div>
       <div className="my-2 flex items-center justify-between text-neutral-dark01">
         <p className="font-medium">FL Coins used</p>

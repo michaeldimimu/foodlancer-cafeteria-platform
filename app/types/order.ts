@@ -43,8 +43,8 @@ export type PopulatedOrder = {
   cafeteria: string;
   plates: Plate[];
   user: User;
-  processingFee: number;
-  processingFeePercentage: number;
+  charges?: number;
+  processingFee?: number;
   subTotal: number;
   total: number;
   coinsUsed: number;
@@ -58,8 +58,8 @@ export type Order = {
   cafeteria: string;
   plates: Plate[];
   user: mongoose.Types.ObjectId;
-  processingFee: number;
-  processingFeePercentage: number;
+  charges?: number;
+  processingFee?: number;
   subTotal: number;
   total: number;
   coinsUsed: number;
