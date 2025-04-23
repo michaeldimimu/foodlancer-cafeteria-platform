@@ -104,34 +104,12 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         ))}
       </div>
 
-      <hr className="mt-4" />
+      <hr className="my-2" />
 
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
-        <p className="font-medium">Subtotal</p>
-        <p className="text-base font-medium">&#8358;{order.subTotal}</p>
-      </div>
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
-        {order.deliveryDetails?.deliveryLocation?.hostel ? (
-          <p className="font-medium">Delivery fee</p>
-        ) : (
-          <p className="font-medium">Processing fee</p>
-        )}
-
-        <p className="text-base font-medium">
-          &#8358;{order.charges ?? order.processingFee}
-        </p>
-      </div>
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
-        <p className="font-medium">FL Coins used</p>
-        <div className="flex items-center text-base font-medium">
-          <TollOutlined fontSize="inherit" />
-          <span>{order.coinsUsed}</span>
-        </div>
-      </div>
-      <hr />
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
+      <div className="mb-2 flex items-center justify-between text-neutral-dark01">
         <p className="text-base font-medium">Total</p>
-        <p className="text-lg font-medium">&#8358;{order.total}</p>
+        {/* It is not necessary to add processing fee/delivery fee here */}
+        <p className="text-lg font-medium">&#8358;{order.subTotal}</p>
       </div>
     </main>
   );

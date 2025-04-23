@@ -31,13 +31,18 @@ const statusSchema = new Schema({
   message: { type: String },
 });
 
+const ChargesSchema = new Schema({
+  foodlancerShare: { type: Number, required: true },
+  agentShare: { type: Number },
+});
+
 const OrderSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
     cafeteria: { type: String, required: true },
     plates: [PlateSchema],
     subTotal: { type: Number, required: true },
-    charges: { type: Number, min: 50, required: true },
+    charges: ChargesSchema,
     processingFee: { type: Number, min: 50, max: 200 },
     total: { type: Number, required: true },
     coinsUsed: { type: Number, required: true },
