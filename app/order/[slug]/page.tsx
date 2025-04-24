@@ -68,6 +68,20 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         </p>
       </div>
 
+      {order.deliveryDetails?.deliveryLocation?.hostel && (
+        <div className="mt-2">
+          <p className="font-medium text-neutral-dark01">Deivering to</p>
+          <p className="capitalize">
+            {order.deliveryDetails.deliveryLocation.hostel}
+            {order.deliveryDetails.deliveryLocation.floor &&
+              `, ${order.deliveryDetails.deliveryLocation.floor} floor`}
+            {order.deliveryDetails.deliveryLocation.block &&
+              `, ${order.deliveryDetails.deliveryLocation.block} block`}
+            {`, room ${order.deliveryDetails.deliveryLocation.room}`}
+          </p>
+        </div>
+      )}
+
       <hr className="mt-4" />
 
       <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -90,27 +104,12 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
         ))}
       </div>
 
-      <hr className="mt-4" />
+      <hr className="my-2" />
 
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
-        <p className="font-medium">Subtotal</p>
-        <p className="text-base font-medium">&#8358;{order.subTotal}</p>
-      </div>
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
-        <p className="font-medium">Processing fee</p>
-        <p className="text-base font-medium">&#8358;{order.processingFee}</p>
-      </div>
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
-        <p className="font-medium">FL Coins used</p>
-        <div className="flex items-center text-base font-medium">
-          <TollOutlined fontSize="inherit" />
-          <span>{order.coinsUsed}</span>
-        </div>
-      </div>
-      <hr />
-      <div className="my-2 flex items-center justify-between text-neutral-dark01">
+      <div className="mb-2 flex items-center justify-between text-neutral-dark01">
         <p className="text-base font-medium">Total</p>
-        <p className="text-lg font-medium">&#8358;{order.total}</p>
+        {/* It is not necessary to add processing fee/delivery fee here */}
+        <p className="text-lg font-medium">&#8358;{order.subTotal}</p>
       </div>
     </main>
   );

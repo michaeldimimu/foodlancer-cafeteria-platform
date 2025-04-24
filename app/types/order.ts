@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DeliveryDetails } from "./user";
+import { DeliveryDetails, User } from "./user";
 
 export type OrderFoodItem = {
   _id: mongoose.Types.ObjectId;
@@ -12,14 +12,6 @@ export type Plate = {
   _id: mongoose.Types.ObjectId;
   foodItems: OrderFoodItem[];
   price: number;
-};
-
-export type User = {
-  _id: mongoose.Types.ObjectId;
-  firstName: string;
-  lastName: string;
-  school: string;
-  email: string;
 };
 
 export type OrderStatus = {
@@ -43,8 +35,8 @@ export type PopulatedOrder = {
   cafeteria: string;
   plates: Plate[];
   user: User;
-  processingFee: number;
-  processingFeePercentage: number;
+  charges?: { foodlancerShare: number; agentShare: number };
+  processingFee?: number;
   subTotal: number;
   total: number;
   coinsUsed: number;
@@ -58,8 +50,8 @@ export type Order = {
   cafeteria: string;
   plates: Plate[];
   user: mongoose.Types.ObjectId;
-  processingFee: number;
-  processingFeePercentage: number;
+  charges?: { foodlancerShare: number; agentShare: number };
+  processingFee?: number;
   subTotal: number;
   total: number;
   coinsUsed: number;

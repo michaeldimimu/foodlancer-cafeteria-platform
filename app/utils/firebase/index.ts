@@ -4,13 +4,13 @@ import { type FirebaseOptions, initializeApp } from "firebase/app";
 import { getMessaging } from "firebase/messaging";
 
 const firebaseConfig: FirebaseOptions = {
-  apiKey: "AIzaSyAAZwM-2tlA5YHnLisRbSV5En_QBc2d6_k",
-  authDomain: "foodlancer-ae872.firebaseapp.com",
-  projectId: "foodlancer-ae872",
-  storageBucket: "foodlancer-ae872.firebasestorage.app",
-  messagingSenderId: "123630284354",
-  appId: "1:123630284354:web:92b60161bc7692ba2407db",
-  measurementId: "G-THV2GWYCH1",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: `${process.env.NEXT_PUBLIC_SERVICE_ACCOUNT_PROJECT_ID}.firebaseapp.com`,
+  projectId: `${process.env.NEXT_PUBLIC_SERVICE_ACCOUNT_PROJECT_ID}`,
+  storageBucket: `${process.env.NEXT_PUBLIC_SERVICE_ACCOUNT_PROJECT_ID}.firebasestorage.app`,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 const firebaseapp = initializeApp(firebaseConfig);

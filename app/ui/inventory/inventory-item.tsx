@@ -1,6 +1,5 @@
 import { MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import Image from "next/image";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import toggleAvailability from "@/app/lib/actions/inventory/toggleAvailability";
 

@@ -48,6 +48,7 @@ export type Cart = {
 export type User = {
   _id: mongoose.Types.ObjectId;
   email: string;
+  phoneNumber: string;
   firstName: string;
   lastName: string;
   sex: "male" | "female";
@@ -56,4 +57,5 @@ export type User = {
   wantsInAppPayment: boolean;
   coins: number;
   fcmTokens?: [string];
+  lastUsedDeliveryLocation: DeliveryLocation;
 };
