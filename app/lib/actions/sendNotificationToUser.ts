@@ -40,7 +40,7 @@ export default async function sendNotificationToUser(
       },
       token,
       data: {
-        link: "https://foodlancer-test.netlify.app",
+        link: process.env.NEXT_PUBLIC_BASE_URL,
       },
     },
   };
