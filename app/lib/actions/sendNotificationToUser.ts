@@ -49,7 +49,7 @@ export default async function sendNotificationToUser(
     const accessToken = await getAccessToken();
 
     const response = await axios.post(
-      `https://fcm.googleapis.com/v1/projects/${process.env.SERVICE_ACCOUNT_PROJECT_ID}/messages:send?key=AIzaSyBTAcMkbsVJzZh4dNeL-U9k7pLWk5qAQ0Q`,
+      `https://fcm.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_SERVICE_ACCOUNT_PROJECT_ID}/messages:send?key=AIzaSyBTAcMkbsVJzZh4dNeL-U9k7pLWk5qAQ0Q`,
       notificationDetails,
       {
         headers: {
