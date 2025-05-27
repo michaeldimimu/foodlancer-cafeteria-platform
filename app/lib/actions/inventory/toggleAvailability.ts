@@ -1,6 +1,6 @@
 "use server";
 
-import { MenuItem } from "@/app/types/cafeteria";
+import { MenuCategory, MenuItem } from "@/app/types/cafeteria";
 import getSession from "@/auth/lib/getSession";
 import dbConnect from "@/server/lib/dbConnect";
 import Cafeteria from "@/server/models/Cafeteria";
@@ -25,26 +25,22 @@ export default async function toggleAvailability(
 
   try {
     const cafeteria = await Cafeteria.findOne({ name: user.cafeteria });
+    const categoryIndex = cafeteria.menuCategories.findIndex(
+      (cat: MenuCategory) => cat.name === category,
+    );
+    const itemIndex = cafeteria.menuCategories[categoryIndex].items.findIndex(
+      (item: MenuItem) => item._id.toString() === itemId.toString(),
+    );
 
-    if (category === "mains") {
-      var matchedItem = cafeteria.menu.mains.find(
-        (item: MenuItem) => item.food._id.toString() === itemId.toString(),
-      );
-    } else if (category === "sides") {
-      var matchedItem = cafeteria.menu.sides.find(
-        (item: MenuItem) => item.food._id.toString() === itemId.toString(),
-      );
-    }
+    cafeteria.menuCategories[categoryIndex].items[itemIndex].available =
+      !cafeteria.menuCategories[categoryIndex].items[itemIndex].available;
 
-    matchedItem.available
-      ? (matchedItem.available = false)
-      : (matchedItem.available = true);
     await cafeteria.save();
     revalidatePath("/inventory");
 
     return {
       success: true,
-      message: `Item set to ${!matchedItem.available ? "not" : ""} available`,
+      message: "Item availability updated",
     };
   } catch {
     return {

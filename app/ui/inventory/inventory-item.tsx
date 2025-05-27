@@ -1,3 +1,5 @@
+"use client";
+
 import { MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import Image from "next/image";
 import { toast } from "react-toastify";
@@ -12,7 +14,7 @@ const InventoryItem = ({
 }) => {
   const handleToggleAvailability = async () => {
     const id = toast.loading("Please wait...");
-    const response = await toggleAvailability(item.food._id, category);
+    const response = await toggleAvailability(item._id, category);
     if (response) {
       toast.dismiss(id);
       response.success
@@ -25,15 +27,15 @@ const InventoryItem = ({
     <div className="mb-2 flex justify-between gap-2 rounded-xl border border-gray-300 bg-white">
       <div className="flex gap-2">
         <Image
-          src={item.food.img_url}
+          src={item.imgUrl}
           height="84"
           width="84"
-          alt={item.food.name}
+          alt={item.name}
           className="rounded-l-lg border-b border-gray-300 object-cover"
         />
 
         <div className="py-2">
-          <p className="font-medium text-neutral-dark02">{item.food.name}</p>
+          <p className="font-medium text-neutral-dark02">{item.name}</p>
           <p className="font-semibold text-neutral-dark01">
             &#8358;{item.price}
           </p>

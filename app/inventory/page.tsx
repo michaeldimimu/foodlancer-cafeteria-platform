@@ -1,8 +1,10 @@
 import getSession from "@/auth/lib/getSession";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-import InventoryWrapper from "../ui/inventory/inventory-wrapper";
 import fetchCafeteria from "../lib/data/fetchCafeteria";
+import Link from "next/link";
+import { MenuCategory } from "../types/cafeteria";
+import InventoryItem from "../ui/inventory/inventory-item";
 
 export const metadata: Metadata = {
   title: "Inventory",
@@ -22,13 +24,59 @@ const InventoryPage = async () => {
   }
 
   const cafeteria = await fetchCafeteria();
-  const parsedCafeteria = JSON.parse(JSON.stringify(cafeteria));
 
   return (
     <main className="p-4">
-      <h1 className="mb-2 text-3xl font-bold">Inventory - {user.cafeteria}</h1>
+      <div className="sticky top-0 border-b bg-[#fafafa] py-2">
+        <div className="flex items-center justify-between">
+          <h1 className="mb-2 text-3xl font-bold">
+            Inventory - {user.cafeteria}
+          </h1>
+          <Link
+            href="/add-item"
+            className="rounded-xl bg-primary-one px-4 py-2 font-medium text-white"
+          >
+            Add item +
+          </Link>
+        </div>
 
-      <InventoryWrapper cafeteria={parsedCafeteria} />
+        {cafeteria.menuCategories.length !== 0 && (
+          <div className="flex items-center gap-2">
+            {cafeteria.menuCategories.map((menuCategory: MenuCategory) => (
+              <a
+                key={menuCategory._id.toString()}
+                href={`#${menuCategory.name}`}
+                className="pb-1 font-medium capitalize hover:border-b hover:border-primary-one hover:text-primary-one"
+              >
+                {menuCategory.name}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {cafeteria.menuCategories.length === 0 ? (
+        <p className="text-red-500">
+          No menu categories found. Please add some to manage your inventory.
+        </p>
+      ) : (
+        cafeteria.menuCategories.map((menuCategory: MenuCategory) => (
+          <section
+            key={menuCategory._id.toString()}
+            id={menuCategory.name}
+            className="mb-4"
+          >
+            <h2 className="mb-2 text-2xl capitalize">{menuCategory.name}</h2>
+            {menuCategory.items.map((item) => (
+              <InventoryItem
+                key={item._id.toString()}
+                item={item}
+                category={menuCategory.name}
+              />
+            ))}
+          </section>
+        ))
+      )}
     </main>
   );
 };

@@ -13,17 +13,11 @@ export default async function fetchCafeteria() {
   await dbConnect();
 
   try {
-    const cafeteria = await Cafeteria.findOne({ name: session.user.cafeteria })
-      .populate({
-        path: "menu.mains menu.sides menu.drinks menu.swallow menu.soups",
-        populate: {
-          path: "food",
-          model: Food,
-        },
-      })
-      .exec();
+    const cafeteria = await Cafeteria.findOne({
+      name: session.user.cafeteria,
+    }).exec();
 
-    return cafeteria;
+    return JSON.parse(JSON.stringify(cafeteria));
   } catch (error: any) {
     throw new Error("An error occurred: " + error.message);
   }
