@@ -16,7 +16,6 @@ const AddItemPage = async () => {
   }
 
   const cafeteria = await fetchCafeteria();
-  const parsedCafeteria = JSON.parse(JSON.stringify(cafeteria));
 
   return (
     <main className="p-4">
@@ -24,7 +23,7 @@ const AddItemPage = async () => {
       <p className="mb-4">
         Fields marked <span className="text-red-500">*</span> are required
       </p>
-      <AddItemForm cafeteria={parsedCafeteria} />
+      <AddItemForm cafeteria={cafeteria} />
     </main>
   );
 };
