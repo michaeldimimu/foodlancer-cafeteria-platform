@@ -1,7 +1,6 @@
 import getSession from "@/auth/lib/getSession";
 import dbConnect from "@/server/lib/dbConnect";
 import Cafeteria from "@/server/models/Cafeteria";
-import Food from "@/server/models/Food";
 
 export default async function fetchCafeteria() {
   const session = await getSession();

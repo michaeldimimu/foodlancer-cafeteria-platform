@@ -28,17 +28,9 @@ const InventoryPage = async () => {
   return (
     <main className="p-4">
       <div className="sticky top-0 border-b bg-[#fafafa] py-2">
-        <div className="flex items-center justify-between">
-          <h1 className="mb-2 text-3xl font-bold">
-            Inventory - {user.cafeteria}
-          </h1>
-          <Link
-            href="/add-item"
-            className="rounded-xl bg-primary-one px-4 py-2 font-medium text-white"
-          >
-            Add item +
-          </Link>
-        </div>
+        <h1 className="mb-2 text-3xl font-bold">
+          Inventory - {user.cafeteria}
+        </h1>
 
         {cafeteria.menuCategories.length !== 0 && (
           <div className="flex items-center gap-2">
