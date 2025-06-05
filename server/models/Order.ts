@@ -49,6 +49,7 @@ const OrderSchema = new Schema(
     orderStatus: statusSchema,
     confirmationId: { type: Number, required: true, unique: true },
     fcmTokens: [{ type: String }],
+    emailNotificationRecepients: [{ type: String }],
     deliveryDetails: DeliveryDetailsSchema,
   },
   { timestamps: true },

@@ -34,5 +34,5 @@ export type Cafeteria = {
   online: boolean;
   fcmTokens?: [string];
   deliveryFeeBreakdown: DeliveryFeeBreakdown[];
-  emailNotificationRecepients: string[];
+  emailNotificationRecepients?: string[];
 };
