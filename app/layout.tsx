@@ -7,6 +7,7 @@ import "./globals.css";
 import "react-toastify/ReactToastify.css";
 import Navigation from "./ui/navigation";
 import NextTopLoader from "nextjs-toploader";
+import InstallPWABanner from "./ui/install-pwa-banner";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -75,6 +76,7 @@ export default function RootLayout({
     >
       <SessionProvider>
         <body className="mb-12">
+          <InstallPWABanner />
           <ToastContainer />
           <NextTopLoader color="#8383ff" showSpinner={false} />
           {children}

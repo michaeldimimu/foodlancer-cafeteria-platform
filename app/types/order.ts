@@ -56,5 +56,6 @@ export type Order = {
   total: number;
   coinsUsed: number;
   fcmTokens?: [string];
+  emailNotificationRecepients?: string[];
   deliveryDetails?: DeliveryDetails;
 };

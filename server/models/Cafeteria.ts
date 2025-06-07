@@ -31,6 +31,7 @@ const CafeteriaSchema = new Schema(
     menuCategories: [MenuCategorySchema],
     online: { type: Boolean, required: true },
     deliveryFeeBreakdown: [DeliveryFeeBreakdownSchema],
+    emailNotificationRecepients: [{ type: String }],
     fcmTokens: [{ type: String }],
   },
   { timestamps: true },
