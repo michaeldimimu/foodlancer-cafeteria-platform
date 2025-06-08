@@ -17,6 +17,10 @@ const possibleReasonsForDenial = [
   },
   {
     id: 3,
+    reason: "No payment",
+  },
+  {
+    id: 4,
     reason: "No pick up",
   },
   {
