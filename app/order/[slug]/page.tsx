@@ -4,7 +4,7 @@ import { OrderFoodItem, Plate } from "@/app/types/order";
 import BackButton from "@/app/ui/back-button";
 import OrderStatusTabs from "@/app/ui/orders/order-status-tabs";
 import getSession from "@/auth/lib/getSession";
-import { TollOutlined } from "@mui/icons-material";
+import { CallOutlined, TollOutlined } from "@mui/icons-material";
 
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
@@ -46,6 +46,18 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
           <span className="text-neutral-dark01">Email:</span> {order.user.email}
         </p>
       </div>
+
+      {order.user.phoneNumber && (
+        <div className="mb-2">
+          <a
+            href={`tel:${order.user.phoneNumber}`}
+            className="flex w-fit items-center gap-1 font-medium text-primary-one"
+          >
+            <span>Call customer</span>
+            <CallOutlined fontSize="inherit" />
+          </a>
+        </div>
+      )}
 
       <OrderStatusTabs
         status={order.orderStatus.value}
