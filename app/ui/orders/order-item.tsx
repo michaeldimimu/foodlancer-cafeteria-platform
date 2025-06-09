@@ -60,7 +60,7 @@ const OrderItem = ({ order }: { order: Order }) => {
           <p>
             {order.plates.length} {order.plates.length > 1 ? "plates" : "plate"}{" "}
             from {order.cafeteria} |{" "}
-            <span className="font-semibold">&#8358;{order.total}</span>
+            <span className="font-semibold">&#8358;{order.subTotal}</span>
           </p>
         </div>
       </div>
