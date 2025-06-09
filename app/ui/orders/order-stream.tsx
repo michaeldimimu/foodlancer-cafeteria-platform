@@ -7,13 +7,15 @@ import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/navigation";
 import fetchActiveOrders from "@/app/lib/data/fetchActiveOrders";
 
-type OrderListProps = {
-  initialOrders: Order[];
-};
-
 const NUMBER_OF_ORDERS_TO_FETCH = 20;
 
-const OrderStream = ({ initialOrders }: OrderListProps) => {
+const OrderStream = ({
+  initialOrders,
+  fetchFunction,
+}: {
+  initialOrders: Order[];
+  fetchFunction: (offset: number, limit: number) => Promise<Order[]>;
+}) => {
   const [offset, setOffset] = useState(NUMBER_OF_ORDERS_TO_FETCH);
   const [orders, setOrders] = useState<Order[]>(initialOrders);
   const [isShowingLoadingSpinner, setIsShowingLoadingSpinner] = useState(true);
@@ -21,7 +23,7 @@ const OrderStream = ({ initialOrders }: OrderListProps) => {
   const router = useRouter();
 
   const loadMoreOrders = async () => {
-    const fetchedOrders = await fetchActiveOrders(
+    const fetchedOrders = await fetchFunction(
       offset,
       NUMBER_OF_ORDERS_TO_FETCH,
     );
@@ -36,7 +38,7 @@ const OrderStream = ({ initialOrders }: OrderListProps) => {
   };
 
   const refreshOrders = async () => {
-    const initialOrders = await fetchActiveOrders(0, 20);
+    const initialOrders = await fetchFunction(0, 20);
     setOrders(initialOrders);
   };
 
