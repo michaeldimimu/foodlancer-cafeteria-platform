@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import TotalEarnings from "./total-earnings";
 
 const OrderStreamHeader = ({ cafeteria }: { cafeteria: string }) => {
   const pathName = usePathname();
@@ -14,13 +15,13 @@ const OrderStreamHeader = ({ cafeteria }: { cafeteria: string }) => {
 
   return (
     <header className="sticky top-0 mb-4 bg-neutral-light">
+      <TotalEarnings />
       <h1 className="mb-4 text-3xl font-bold">
         {pathName === "/"
           ? "Ongoing orders"
           : pathName === "/completed-orders"
             ? "Completed orders"
-            : pathName === "/unsuccessful-orders" && "Unsuccessful orders"}{" "}
-        - {cafeteria}
+            : pathName === "/unsuccessful-orders" && "Unsuccessful orders"}
       </h1>
       <nav className="flex gap-2">
         <a href="/" className={getLinkStyle("/")}>
