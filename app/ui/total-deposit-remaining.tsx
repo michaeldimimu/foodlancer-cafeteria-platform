@@ -1,5 +1,6 @@
 import { AccountBalanceWalletOutlined } from "@mui/icons-material";
 import fetchTotalDepositRemaining from "../lib/data/fetchTotalDepositRemaining";
+import formatPrice from "../utils/formatPrice";
 
 const TotalDepositRemaining = async () => {
   const totalDepositRemaining = await fetchTotalDepositRemaining();
@@ -9,7 +10,7 @@ const TotalDepositRemaining = async () => {
         <p
           className={`${totalDepositRemaining < 0 && "text-red-700"} text-2xl font-semibold`}
         >
-          &#8358;{totalDepositRemaining}
+          {formatPrice(totalDepositRemaining)}
         </p>
 
         <div className="flex items-center gap-2">
