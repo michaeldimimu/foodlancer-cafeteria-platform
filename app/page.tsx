@@ -27,7 +27,7 @@ const Home = async () => {
   return (
     <main className="p-4">
       {/* <FCMTokenDisplay /> */}
-      <OrderStreamHeader cafeteria={user.cafeteria} />
+      <OrderStreamHeader />
 
       {initialOrders && initialOrders.length > 0 ? (
         <OrderStream

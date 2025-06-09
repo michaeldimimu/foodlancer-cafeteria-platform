@@ -33,6 +33,7 @@ const CafeteriaSchema = new Schema(
     deliveryFeeBreakdown: [DeliveryFeeBreakdownSchema],
     emailNotificationRecepients: [{ type: String }],
     fcmTokens: [{ type: String }],
+    totalDepositRemaining: { type: Number, required: true, default: 0 },
   },
   { timestamps: true },
 );

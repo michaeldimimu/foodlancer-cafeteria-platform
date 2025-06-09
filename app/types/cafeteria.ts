@@ -35,4 +35,5 @@ export type Cafeteria = {
   fcmTokens?: [string];
   deliveryFeeBreakdown: DeliveryFeeBreakdown[];
   emailNotificationRecepients?: string[];
+  totalDepositRemaining: number;
 };

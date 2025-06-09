@@ -27,7 +27,7 @@ export default async function fetchUnsuccessfulOrders(
       .sort({ createdAt: -1 })
       .exec();
 
-    revalidatePath("/");
+    revalidatePath("/unsuccessful-orders");
     return JSON.parse(JSON.stringify(unsuccessfulOrders));
   } catch (error: any) {
     throw new Error(error.message);
