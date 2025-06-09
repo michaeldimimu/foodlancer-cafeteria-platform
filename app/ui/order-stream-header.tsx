@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-const OrderStreamHeader = ({ cafeteria }: { cafeteria: string }) => {
+const OrderStreamHeader = () => {
   const pathName = usePathname();
 
   const getLinkStyle = (path: string) => {
@@ -19,8 +19,7 @@ const OrderStreamHeader = ({ cafeteria }: { cafeteria: string }) => {
           ? "Ongoing orders"
           : pathName === "/completed-orders"
             ? "Completed orders"
-            : pathName === "/unsuccessful-orders" && "Unsuccessful orders"}{" "}
-        - {cafeteria}
+            : pathName === "/unsuccessful-orders" && "Unsuccessful orders"}
       </h1>
       <nav className="flex gap-2">
         <a href="/" className={getLinkStyle("/")}>

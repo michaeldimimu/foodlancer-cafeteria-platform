@@ -9,6 +9,7 @@ import LogoutButton from "../ui/account/logout-button";
 import { WhatsApp } from "@mui/icons-material";
 import fetchCafeteria from "../lib/data/fetchCafeteria";
 import OnlineStatusToggle from "../ui/online-status-toggle";
+import TotalDepositRemaining from "../ui/total-deposit-remaining";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -37,6 +38,8 @@ const AccountPage = async () => {
         <h1 className="mb-4 mt-2 text-3xl font-bold">Account</h1>
         <OnlineStatusToggle online={cafeteria.online} />
       </div>
+
+      <TotalDepositRemaining />
 
       <div className="mb-2">
         <p className="font-medium text-neutral-dark01">Email</p>

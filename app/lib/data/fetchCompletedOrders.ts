@@ -27,7 +27,7 @@ export default async function fetchCompletedOrders(
       .sort({ createdAt: -1 })
       .exec();
 
-    revalidatePath("/");
+    revalidatePath("/completed-orders");
     return JSON.parse(JSON.stringify(completedOrders));
   } catch (error: any) {
     throw new Error(error.message);
