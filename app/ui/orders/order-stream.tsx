@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import OrderItem from "./order-item";
 import { Order } from "@/app/types/order";
-import fetchOrderStream from "@/app/lib/data/fetchOrderStream";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/navigation";
+import fetchActiveOrders from "@/app/lib/data/fetchActiveOrders";
 
 type OrderListProps = {
   initialOrders: Order[];
@@ -21,7 +21,7 @@ const OrderStream = ({ initialOrders }: OrderListProps) => {
   const router = useRouter();
 
   const loadMoreOrders = async () => {
-    const fetchedOrders = await fetchOrderStream(
+    const fetchedOrders = await fetchActiveOrders(
       offset,
       NUMBER_OF_ORDERS_TO_FETCH,
     );
@@ -36,7 +36,7 @@ const OrderStream = ({ initialOrders }: OrderListProps) => {
   };
 
   const refreshOrders = async () => {
-    const initialOrders = await fetchOrderStream(0, 20);
+    const initialOrders = await fetchActiveOrders(0, 20);
     setOrders(initialOrders);
   };
 
