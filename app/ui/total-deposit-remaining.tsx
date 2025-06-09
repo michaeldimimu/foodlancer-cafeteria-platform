@@ -6,7 +6,11 @@ const TotalDepositRemaining = async () => {
   return (
     <section className="mb-4 flex w-full items-center justify-between gap-2 rounded-xl border border-gray-300 bg-white p-4 text-neutral-dark01">
       <div>
-        <p className="text-2xl font-medium">&#8358;{totalDepositRemaining}</p>
+        <p
+          className={`${totalDepositRemaining < 0 && "text-red-700"} text-2xl font-semibold`}
+        >
+          &#8358;{totalDepositRemaining}
+        </p>
 
         <div className="flex items-center gap-2">
           <p className="text-xs text-neutral-dark02 sm:text-sm">
