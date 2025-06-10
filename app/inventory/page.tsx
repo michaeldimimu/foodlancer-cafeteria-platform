@@ -33,7 +33,7 @@ const InventoryPage = async () => {
         </h1>
 
         {cafeteria.menuCategories.length !== 0 && (
-          <div className="flex items-center gap-2">
+          <div className="flex w-full items-center gap-2 overflow-x-scroll">
             {cafeteria.menuCategories.map((menuCategory: MenuCategory) => (
               <a
                 key={menuCategory._id.toString()}
