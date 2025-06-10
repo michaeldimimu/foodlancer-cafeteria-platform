@@ -1,18 +1,21 @@
 import mongoose from "mongoose";
+import { Addon } from "./cafeteria";
 
 export type FoodDetails = {
   _id: mongoose.Types.ObjectId;
   name: string;
-  img_url: string;
-  type: string;
-  subcat?: string;
+  price: number;
+  imgUrl: string;
+  available: boolean;
+  description: string;
+  addons: Addon[];
 };
 
 export type CartFoodItem = {
   _id: mongoose.Types.ObjectId;
   food: FoodDetails;
-  price: number;
   quantity: number;
+  category: string;
 };
 
 export type Plate = {
@@ -57,5 +60,5 @@ export type User = {
   wantsInAppPayment: boolean;
   coins: number;
   fcmTokens?: [string];
-  lastUsedDeliveryLocation: DeliveryLocation;
+  lastUsedDeliveryLocation?: DeliveryLocation;
 };

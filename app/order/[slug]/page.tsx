@@ -105,7 +105,10 @@ const OrderPage = async ({ params }: { params: { slug: string } }) => {
             {plate.foodItems.map((item: OrderFoodItem) => (
               <div key={item._id.toString()}>
                 <p className="text-neutral-dark03">
-                  {item.name} x{item.quantity}
+                  {item.name}{" "}
+                  {item.addons.length > 0 &&
+                    `(with ${item.addons.map((addon) => addon.name).join(", ")})`}{" "}
+                  x {item.quantity}
                 </p>
                 <p className="text-base font-medium text-neutral-dark01">
                   &#8358;{item.price * item.quantity}

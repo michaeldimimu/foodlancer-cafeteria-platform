@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 import { DeliveryDetailsSchema } from "./User";
+import { AddonSchema } from "./Cafeteria";
 const { Schema } = mongoose;
 
 const FoodItemSchema = new Schema({
   name: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
+  addons: [AddonSchema],
 });
 
 const PlateSchema = new Schema({

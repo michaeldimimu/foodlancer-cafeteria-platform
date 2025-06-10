@@ -1,10 +1,20 @@
 import mongoose from "mongoose";
+import { AddonSchema } from "./Cafeteria";
 const { Schema } = mongoose;
 
-const FoodItemSchema = new Schema({
-  food: { type: Schema.Types.ObjectId, ref: "Food", required: true },
+const FoodSchema = new Schema({
+  name: { type: String, required: true },
   price: { type: Number, required: true },
+  imgUrl: { type: String, required: true },
+  available: { type: Boolean, default: true },
+  description: { type: String },
+  addons: [AddonSchema],
+});
+
+const FoodItemSchema = new Schema({
+  food: FoodSchema,
   quantity: { type: Number, min: 1, required: true },
+  category: { type: String, required: true },
 });
 
 const PlateSchema = new Schema({
