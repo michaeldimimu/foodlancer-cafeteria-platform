@@ -8,7 +8,8 @@ export type DeliveryFeeBreakdown = {
 export type Addon = {
   _id: mongoose.Types.ObjectId;
   name: string;
-  price: string;
+  price: number;
+  available: boolean;
 };
 
 export type MenuItem = {
@@ -18,7 +19,7 @@ export type MenuItem = {
   imgUrl: string;
   available: boolean;
   description: string;
-  addons: [Addon];
+  addons: Addon[];
 };
 
 export type MenuCategory = {
@@ -35,5 +36,6 @@ export type Cafeteria = {
   fcmTokens?: [string];
   deliveryFeeBreakdown: DeliveryFeeBreakdown[];
   emailNotificationRecepients?: string[];
+  paystackSubaccountID?: string;
   totalDepositRemaining: number;
 };

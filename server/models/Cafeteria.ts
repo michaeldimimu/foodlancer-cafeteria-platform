@@ -6,9 +6,10 @@ const DeliveryFeeBreakdownSchema = new Schema({
   distance: { type: String, enum: ["long", "short"], required: true },
 });
 
-const AddonSchema = new Schema({
+export const AddonSchema = new Schema({
   name: { type: String },
   price: { type: Number },
+  available: { type: Boolean },
 });
 
 const MenuItemSchema = new Schema({
@@ -33,6 +34,7 @@ const CafeteriaSchema = new Schema(
     deliveryFeeBreakdown: [DeliveryFeeBreakdownSchema],
     emailNotificationRecepients: [{ type: String }],
     fcmTokens: [{ type: String }],
+    paystackSubaccountID: { type: String }, // For Paystack subaccount ID
     totalDepositRemaining: { type: Number, required: true, default: 0 },
   },
   { timestamps: true },
