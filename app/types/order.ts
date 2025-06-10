@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { DeliveryDetails } from "./user";
+import { DeliveryDetails, User } from "./user";
 import { Addon } from "./cafeteria";
 
 export type OrderFoodItem = {
@@ -27,6 +27,24 @@ export type OrderStatus = {
     | "delivered"
     | "claimed";
   message: string;
+};
+
+export type PopulatedOrder = {
+  _id: mongoose.Types.ObjectId;
+  orderStatus: OrderStatus;
+  confirmationId: string;
+  createdAt: string;
+  cafeteria: string;
+  plates: Plate[];
+  user: User;
+  charges?: { foodlancerShare: number; agentShare: number };
+  processingFee?: number;
+  subTotal: number;
+  total: number;
+  coinsUsed: number;
+  fcmTokens?: [string];
+  emailNotificationRecepients?: string[];
+  deliveryDetails?: DeliveryDetails;
 };
 
 export type Order = {
