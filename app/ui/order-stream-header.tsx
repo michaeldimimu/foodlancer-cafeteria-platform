@@ -21,7 +21,7 @@ const OrderStreamHeader = () => {
             ? "Completed orders"
             : pathName === "/unsuccessful-orders" && "Unsuccessful orders"}
       </h1>
-      <nav className="flex gap-2">
+      <nav className="flex gap-2 border-b pb-2">
         <a href="/" className={getLinkStyle("/")}>
           Active
         </a>

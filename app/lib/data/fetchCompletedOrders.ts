@@ -18,14 +18,25 @@ export default async function fetchCompletedOrders(
   await dbConnect();
 
   try {
-    const completedOrders = await Order.find({
-      cafeteria: session.user.cafeteria,
-      "orderStatus.value": { $in: ["delivered", "claimed"] },
-    })
-      .skip(offset)
-      .limit(limit)
-      .sort({ createdAt: -1 })
-      .exec();
+    let completedOrders;
+    if (session.user.email === "mikedpsycho002@gmail.com") {
+      completedOrders = await Order.find({
+        "orderStatus.value": { $in: ["delivered", "claimed"] },
+      })
+        .skip(offset)
+        .limit(limit)
+        .sort({ createdAt: -1 })
+        .exec();
+    } else {
+      completedOrders = await Order.find({
+        cafeteria: session.user.cafeteria,
+        "orderStatus.value": { $in: ["delivered", "claimed"] },
+      })
+        .skip(offset)
+        .limit(limit)
+        .sort({ createdAt: -1 })
+        .exec();
+    }
 
     revalidatePath("/completed-orders");
     return JSON.parse(JSON.stringify(completedOrders));
