@@ -2,7 +2,6 @@ import getSession from "@/auth/lib/getSession";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import fetchCafeteria from "../lib/data/fetchCafeteria";
-import Link from "next/link";
 import { MenuCategory } from "../types/cafeteria";
 import InventoryItem from "../ui/inventory/inventory-item";
 
@@ -38,7 +37,7 @@ const InventoryPage = async () => {
               <a
                 key={menuCategory._id.toString()}
                 href={`#${menuCategory.name}`}
-                className="pb-1 font-medium capitalize hover:border-b hover:border-primary-one hover:text-primary-one"
+                className="rounded-xl border p-2 text-xs font-medium capitalize hover:border-b hover:border-primary-one hover:text-primary-one sm:text-sm"
               >
                 {menuCategory.name}
               </a>
