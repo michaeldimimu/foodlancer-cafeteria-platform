@@ -13,6 +13,7 @@ import {
   KeyboardArrowDownOutlined,
   KeyboardArrowUpOutlined,
 } from "@mui/icons-material";
+import toggleAddonAvailability from "@/app/lib/actions/inventory/toggleAddonAvailability";
 
 const InventoryItem = ({
   item,
@@ -30,6 +31,17 @@ const InventoryItem = ({
   const handleToggleAvailability = async () => {
     const id = toast.loading("Please wait...");
     const response = await toggleAvailability(item._id, category);
+    if (response) {
+      toast.dismiss(id);
+      response.success
+        ? toast.success(response.message)
+        : toast.error(response.message);
+    }
+  };
+
+  const handleToggleAddonAvailability = async (addonId: string) => {
+    const id = toast.loading("Please wait...");
+    const response = await toggleAddonAvailability(addonId, item._id, category);
     if (response) {
       toast.dismiss(id);
       response.success
@@ -142,7 +154,9 @@ const InventoryItem = ({
                     <p>Available</p>
                     {/* custom toggle button */}
                     <button
-                      onClick={handleToggleAvailability}
+                      onClick={() =>
+                        handleToggleAddonAvailability(addon._id.toString())
+                      }
                       className={`${addon.available ? "bg-primary-one/20" : "bg-gray-200"} w-10 rounded-full p-1`}
                     >
                       <div
