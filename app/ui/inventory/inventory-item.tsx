@@ -1,6 +1,6 @@
 "use client";
 
-import { MenuItem as MenuItemType } from "@/app/types/cafeteria";
+import { Addon, MenuItem as MenuItemType } from "@/app/types/cafeteria";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import toggleAvailability from "@/app/lib/actions/inventory/toggleAvailability";
@@ -8,7 +8,11 @@ import EditItemDrawer from "./edit-item-drawer";
 import { useState } from "react";
 import deleteItem from "@/app/lib/actions/inventory/deleteItem";
 import ConfirmActionPopup from "../confirm-action-popup";
-import { DeleteOutlineOutlined } from "@mui/icons-material";
+import {
+  DeleteOutlineOutlined,
+  KeyboardArrowDownOutlined,
+  KeyboardArrowUpOutlined,
+} from "@mui/icons-material";
 
 const InventoryItem = ({
   item,
@@ -21,6 +25,7 @@ const InventoryItem = ({
     isShowing: false,
     description: "",
   });
+  const [isShowingAddons, setIsShowingAddons] = useState(false);
 
   const handleToggleAvailability = async () => {
     const id = toast.loading("Please wait...");
@@ -111,6 +116,46 @@ const InventoryItem = ({
           </div>
         </div>
       </div>
+
+      {item.addons.length > 0 && (
+        <div className="mb-8">
+          <button
+            onClick={() => setIsShowingAddons((prev) => !prev)}
+            className="mb-1 flex w-full items-center justify-between rounded-xl bg-gray-100 px-4 py-2"
+          >
+            <span className="font-semibold text-neutral-dark01">Addons</span>
+            {isShowingAddons ? (
+              <KeyboardArrowUpOutlined />
+            ) : (
+              <KeyboardArrowDownOutlined />
+            )}
+          </button>
+          {isShowingAddons && (
+            <div>
+              {item.addons.map((addon: Addon) => (
+                <div
+                  key={addon._id.toString()}
+                  className="mb-1 flex items-center justify-between rounded-xl border bg-white px-4 py-2 last:mb-0"
+                >
+                  <span>{addon.name}</span>
+                  <div className="flex items-center gap-2">
+                    <p>Available</p>
+                    {/* custom toggle button */}
+                    <button
+                      onClick={handleToggleAvailability}
+                      className={`${addon.available ? "bg-primary-one/20" : "bg-gray-200"} w-10 rounded-full p-1`}
+                    >
+                      <div
+                        className={`${addon.available ? "ml-auto bg-primary-one" : "mr-auto bg-gray-400"} h-4 w-4 rounded-full shadow-md`}
+                      />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </>
   );
 };
