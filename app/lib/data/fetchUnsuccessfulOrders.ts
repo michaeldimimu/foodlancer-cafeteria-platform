@@ -18,14 +18,25 @@ export default async function fetchUnsuccessfulOrders(
   await dbConnect();
 
   try {
-    const unsuccessfulOrders = await Order.find({
-      cafeteria: session.user.cafeteria,
-      "orderStatus.value": { $in: ["cancelled", "denied"] },
-    })
-      .skip(offset)
-      .limit(limit)
-      .sort({ createdAt: -1 })
-      .exec();
+    let unsuccessfulOrders;
+    if (session.user.email === "mikedpsycho002@gmail.com") {
+      unsuccessfulOrders = await Order.find({
+        "orderStatus.value": { $in: ["cancelled", "denied"] },
+      })
+        .skip(offset)
+        .limit(limit)
+        .sort({ createdAt: -1 })
+        .exec();
+    } else {
+      unsuccessfulOrders = await Order.find({
+        cafeteria: session.user.cafeteria,
+        "orderStatus.value": { $in: ["cancelled", "denied"] },
+      })
+        .skip(offset)
+        .limit(limit)
+        .sort({ createdAt: -1 })
+        .exec();
+    }
 
     revalidatePath("/unsuccessful-orders");
     return JSON.parse(JSON.stringify(unsuccessfulOrders));

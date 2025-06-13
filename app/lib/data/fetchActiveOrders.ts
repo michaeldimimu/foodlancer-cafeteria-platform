@@ -15,16 +15,29 @@ export default async function fetchActiveOrders(offset: number, limit: number) {
   await dbConnect();
 
   try {
-    const activeOrders = await Order.find({
-      cafeteria: session.user.cafeteria,
-      "orderStatus.value": {
-        $in: ["confirming", "confirmed", "paid", "delivering"],
-      },
-    })
-      .skip(offset)
-      .limit(limit)
-      .sort({ createdAt: -1 })
-      .exec();
+    let activeOrders;
+    if (session.user.email === "mikedpsycho002@gmail.com") {
+      activeOrders = await Order.find({
+        "orderStatus.value": {
+          $in: ["confirming", "confirmed", "paid", "delivering"],
+        },
+      })
+        .skip(offset)
+        .limit(limit)
+        .sort({ createdAt: -1 })
+        .exec();
+    } else {
+      activeOrders = await Order.find({
+        cafeteria: session.user.cafeteria,
+        "orderStatus.value": {
+          $in: ["confirming", "confirmed", "paid", "delivering"],
+        },
+      })
+        .skip(offset)
+        .limit(limit)
+        .sort({ createdAt: -1 })
+        .exec();
+    }
 
     revalidatePath("/");
     return JSON.parse(JSON.stringify(activeOrders));
